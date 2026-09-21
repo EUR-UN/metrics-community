@@ -321,5 +321,125 @@
     "comment_url": "https://github.com/lowlighter/metrics/issues/1488#issuecomment-5763545863",
     "timestamp": "2026-09-21T16:03:44.938Z",
     "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1371,
+    "author": "lowlighter",
+    "title": "fix(plugins/notable): fails when org uses SAML",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1371#issuecomment-5766111207",
+    "timestamp": "2026-09-21T19:17:21.750Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1360,
+    "author": "lowlighter",
+    "title": "fix(metrics/insights): unexpected error in sponsors plugin response",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1360#issuecomment-5766112661",
+    "timestamp": "2026-09-21T19:17:28.378Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1340,
+    "author": "lowlighter",
+    "title": "feat(plugins/community/chess): complicated moves in chess does not work",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1340#issuecomment-5766113982",
+    "timestamp": "2026-09-21T19:17:34.857Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1334,
+    "author": "lowlighter",
+    "title": "feat(app/metrics): support to sign commit by gpg-private-key",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1334#issuecomment-5766115576",
+    "timestamp": "2026-09-21T19:17:41.209Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1292,
+    "author": "lowlighter",
+    "title": "feat(app/metrics): support new PAT format",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1292#issuecomment-5766117099",
+    "timestamp": "2026-09-21T19:17:48.190Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1229,
+    "author": "lowlighter",
+    "title": "fix(app/metrics): irrevelant warnings",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1229#issuecomment-5766118701",
+    "timestamp": "2026-09-21T19:17:54.452Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1162,
+    "author": "lowlighter",
+    "title": "feat(plugins/stargazers): support alternative geocoding service",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1162#issuecomment-5766120084",
+    "timestamp": "2026-09-21T19:18:01.073Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1157,
+    "author": "lowlighter",
+    "title": "fix(plugins/notable): possible issues",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1157#issuecomment-5766121452",
+    "timestamp": "2026-09-21T19:18:07.949Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1093,
+    "author": "lowlighter",
+    "title": "feat(plugins/sponsors): newsletter display",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1093#issuecomment-5766122824",
+    "timestamp": "2026-09-21T19:18:14.402Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1072,
+    "author": "lowlighter",
+    "title": "fix(app/metrics): private repositories may be always ignored",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1072#issuecomment-5766124168",
+    "timestamp": "2026-09-21T19:18:21.041Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1062,
+    "author": "lowlighter",
+    "title": "feat(app/metrics): grouped users metrics support",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1062#issuecomment-5766125594",
+    "timestamp": "2026-09-21T19:18:27.475Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 859,
+    "author": "lowlighter",
+    "title": "fix(plugins/followup): some stats from `indepth` are incorrect",
+    "domain": "general",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/859#issuecomment-5766127172",
+    "timestamp": "2026-09-21T19:18:33.906Z",
+    "status": "posted"
   }
 ]

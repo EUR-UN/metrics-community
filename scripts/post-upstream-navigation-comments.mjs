@@ -120,7 +120,14 @@ function classifyItem(item) {
   const author = item.author || "unknown"
 
   // Bot check
-  if (item.is_bot || author.includes("[bot]") || author === "dependabot" || author === "github-actions") {
+  if (
+    item.is_bot ||
+    author.includes("[bot]") ||
+    author.includes("bot") ||
+    author.includes("dependabot") ||
+    author === "github-actions" ||
+    item.title.startsWith("chore(deps")
+  ) {
     return {
       human: false,
       meaningful: false,
@@ -132,9 +139,24 @@ function classifyItem(item) {
     }
   }
 
+  // Self check
+  if (author.toLowerCase() === "yuanweize") {
+    return {
+      human: true,
+      meaningful: true,
+      comment: false,
+      reason: "Self-authored item by maintainer",
+      domain: "self",
+      community_target: null,
+      status: "skipped_self"
+    }
+  }
+
   // Obvious Spam / Junk PR check
   const isJunkPR = item.type === "pull_request" && (
-    text.length < 15 && (text.includes("test") || text.includes("asdf") || text.includes("hello"))
+    (text.includes("hello") && text.includes("goodbye")) ||
+    item.title.toLowerCase().includes("add uptade") ||
+    (text.length < 15 && (text.includes("test") || text.includes("asdf")))
   )
   const isSpam = text.includes("crypto") || text.includes("casino") || text.includes("seo promotion") || text.includes("free followers")
 
@@ -143,7 +165,7 @@ function classifyItem(item) {
       human: true,
       meaningful: false,
       comment: false,
-      reason: isSpam ? "Obvious spam/promotion" : "Empty test/practice submission",
+      reason: isSpam ? "Obvious spam/promotion" : "Practice/junk/unrelated submission",
       domain: "spam",
       community_target: null,
       status: "skipped_spam"
