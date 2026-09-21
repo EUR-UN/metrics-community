@@ -60,16 +60,13 @@ jobs:
           BRANCH_NAME="sync/upstream-$(date +%Y%m%d)"
           git checkout -b "$BRANCH_NAME" upstream/master
           git push -u origin "$BRANCH_NAME"
+          cat << 'EOF' > /tmp/pr_body.md
+          Automated synchronization with upstream `lowlighter/metrics:master`.
+          
+          Please review and run CI tests before merging into `main` to prevent regressions.
+          EOF
           gh pr create \
             --base main \
             --head "$BRANCH_NAME" \
             --title "chore(sync): sync with upstream lowlighter/metrics ($(date +%Y-%m-%d))" \
-            --body "Automated synchronization with upstream \`lowlighter/metrics:master\`.
-
-### Upstream Commits
-\`\`\`
-$(git log --oneline -n 20 upstream/master)
-\`\`\`
-
-> [!NOTE]
-> Please review and run CI tests before merging into \`main\` to prevent regressions."
+            --body-file /tmp/pr_body.md
