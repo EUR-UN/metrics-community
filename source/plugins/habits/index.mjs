@@ -11,13 +11,13 @@ export default async function({login, data, rest, imports, q, account}, {enabled
 
     //Load inputs
     let {from, days, facts, charts, "charts.type": _charts, trim, "languages.limit": limit, "languages.threshold": threshold, skipped = []} = imports.metadata.plugins.habits.inputs({data, account, q}, defaults)
-    threshold = (Number(threshold.replace(/%$/, "")) || 0) / 100
+    threshold = (Number(`${threshold ?? 0}`.replace(/%$/, "")) || 0) / 100
     skipped.push(...data.shared["repositories.skipped"])
 
     //Initialization
     const habits = {facts, charts, trim, lines: {average: {chars: 0}}, commits: {fetched: 0, hour: NaN, hours: {}, day: NaN, days: {}}, indents: {style: "", spaces: 0, tabs: 0}, linguist: {available: false, ordered: [], languages: {}}}
     const pages = Math.ceil(from / 100)
-    const offset = data.config.timezone?.offset ?? 0
+    const offset = data.config?.timezone?.offset ?? 0
 
     //Get user recent activity
     console.debug(`metrics/compute/${login}/plugins > habits > querying api`)
@@ -47,15 +47,16 @@ export default async function({login, data, rest, imports, q, account}, {enabled
     const patches = [
       ...await Promise.allSettled(
         commits
-          .flatMap(({payload}) => payload.commits)
+          .flatMap(({payload}) => payload?.commits ?? [])
+          .filter(commit => commit && commit.author)
           .filter(({author}) => data.shared["commits.authoring"].filter(authoring => author?.login?.toLocaleLowerCase().includes(authoring) || author?.email?.toLocaleLowerCase().includes(authoring) || author?.name?.toLocaleLowerCase().includes(authoring)).length)
-          .map(async commit => (await rest.request(commit)).data.files),
+          .map(async commit => (await rest.request(commit)).data?.files ?? []),
       ),
     ]
       .filter(({status}) => status === "fulfilled")
       .map(({value}) => value)
-      .flatMap(files => files.map(file => ({name: imports.paths.basename(file.filename), patch: file.patch ?? ""})))
-      .map(({name, patch}) => ({name, patch: patch.split("\n").filter(line => /^[+]/.test(line)).map(line => line.substring(1)).join("\n")}))
+      .flatMap(files => (files ?? []).filter(file => file && file.filename).map(file => ({name: imports.paths.basename(file.filename), patch: file.patch ?? ""})))
+      .map(({name, patch}) => ({name, patch: (patch ?? "").split("\n").filter(line => /^[+]/.test(line)).map(line => line.substring(1)).join("\n")}))
 
     //Commit day
     {
