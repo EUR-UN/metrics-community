@@ -1,0 +1,757 @@
+[
+  {
+    "number": 1713,
+    "title": "sharp fails to compile",
+    "user": "lishaduck",
+    "author_association": "NONE",
+    "created_at": "2025-04-24T15:07:29Z",
+    "updated_at": "2025-04-24T16:56:59Z",
+    "labels": [],
+    "state": "open",
+    "body": "sharp requires vips, so node-gyp fails to install on Alpine all of a sudden.\r\n\r\n_Originally posted by @lishaduck in https://github.com/lowlighter/metrics/discussions/1712_",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1713",
+    "comments_count": 2,
+    "comments": [
+      {
+        "id": 2828276232,
+        "user": "lishaduck",
+        "created_at": "2025-04-24T16:56:05Z",
+        "body": "(Sorry, meant to post this to @gh-metrics)"
+      },
+      {
+        "id": 2828278109,
+        "user": "lishaduck",
+        "created_at": "2025-04-24T16:56:58Z",
+        "body": "Anway, if anyone hits this, they can migrate to gh-metrics/metrics, where I think I fixed it (haven't gotten tests to run on v3 yet)"
+      }
+    ]
+  },
+  {
+    "number": 1706,
+    "title": "\"Manager\" Achievement Broken Due to Projects Classic Deprecation",
+    "user": "TonySatrem",
+    "author_association": "NONE",
+    "created_at": "2025-04-03T06:20:55Z",
+    "updated_at": "2025-11-28T21:34:10Z",
+    "labels": [],
+    "state": "open",
+    "body": "The \"Manager\" achievement (from plugin_achievements) is failing because it uses the deprecated Projects (classic) API: [sunset on May 23, 2024](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/).\r\n\r\n**Error observed:**\r\n\r\n```\r\nerrors: [\r\n  {\r\n    'NOT_FOUND',\r\n    [ 'user', 'projects' ],\r\n    [ { line: 50, column: 5 } ],\r\n    'Projects (classic) is being deprecated in favor of the new Projects experience, see: [https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/.](https://github.blog/changelog/2024-05-23-sunset-notice-projects-classic/)'\r\n]\r\n```\r\n\r\n**Reproduction steps:**\r\n\r\n1. Use this workflow:\r\n```yml\r\n- uses: lowlighter/metrics@latest\r\n  with:\r\n    plugin_achievements: yes\r\n```\r\n2. Have at least one Project V2 in your account.\r\n3. Run the action.\r\n\r\n**Proposed solution:**\r\n\r\nCode Change in [plugins/achievements/list/users.mjs](https://github.com/lowlighter/metrics/blob/master/source/plugins/achievements/list/users.mjs) `Manager block`\r\n\r\n**Additional Context:**\r\n\r\nImpact: Affects all users with Projects V2 who enable plugin_achievements\r\n\r\nDocumentation:\r\n- [Project GraphQL Schema](https://docs.github.com/en/graphql/reference/objects#project)\r\n- [Projects V2 GraphQL Schema](https://docs.github.com/en/graphql/reference/objects#projectv2)\r\n\r\n_Originally posted by @TonySatrem in https://github.com/lowlighter/metrics/discussions/1705_",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1706",
+    "comments_count": 18,
+    "comments": [
+      {
+        "id": 2779119026,
+        "user": "stalomeow",
+        "created_at": "2025-04-04T15:38:13Z",
+        "body": "Here’s a temporary fix that works for me: stalomeow/metrics@edcae0f874d69e509d25ddd5e750a2f41cd54e10\n\n``` yaml\nuses: stalomeow/metrics@projects-v2 # lowlighter/metrics@latest\n```\n"
+      },
+      {
+        "id": 2781455677,
+        "user": "lishaduck",
+        "created_at": "2025-04-06T14:37:39Z",
+        "body": "This also breaks the org projects metrics (duh :) )."
+      },
+      {
+        "id": 2788183135,
+        "user": "CornWorld",
+        "created_at": "2025-04-09T03:22:43Z",
+        "body": "Plz fix this!"
+      },
+      {
+        "id": 2797113323,
+        "user": "lishaduck",
+        "created_at": "2025-04-11T14:40:09Z",
+        "body": "Do we want to fork this? Simon is a great guy, but he's busy and I'd love to reduce the bus factor here.\n\nI just reserved @gh-metrics just in case.\n\n\nCC: @stalomeow, @lowlighter\n"
+      },
+      {
+        "id": 2802235200,
+        "user": "lishaduck",
+        "created_at": "2025-04-14T16:20:12Z",
+        "body": "@stalomeow, I added you to @gh-metrics."
+      },
+      {
+        "id": 2805121239,
+        "user": "stalomeow",
+        "created_at": "2025-04-15T13:47:54Z",
+        "body": "> [@stalomeow](https://github.com/stalomeow), I added you to [@gh-metrics](https://github.com/gh-metrics).\n\nThanks for the invitation but I'm afraid I won't have the time to help maintain the project."
+      },
+      {
+        "id": 2816951330,
+        "user": "lulunac27a",
+        "created_at": "2025-04-20T02:14:56Z",
+        "body": "I have the same problem too, all the achievements are not showing due to an error."
+      },
+      {
+        "id": 2816955275,
+        "user": "lishaduck",
+        "created_at": "2025-04-20T02:29:03Z",
+        "body": "@lulunac27a, try migrating to `gh-metrics/metrics@master`"
+      },
+      {
+        "id": 2817170175,
+        "user": "lulunac27a",
+        "created_at": "2025-04-20T13:27:31Z",
+        "body": "It works when I use `uses: stalomeow/metrics@projects-v2 # lowlighter/metrics@latest`"
+      },
+      {
+        "id": 2851237042,
+        "user": "mikey-",
+        "created_at": "2025-05-05T14:42:19Z",
+        "body": "@stalomeow why not submit a PR on this repo?"
+      },
+      {
+        "id": 2851248506,
+        "user": "stalomeow",
+        "created_at": "2025-05-05T14:46:13Z",
+        "body": "> [@stalomeow](https://github.com/stalomeow) why not submit a PR on this repo?\n\nThe repo has not been maintained for almost two years."
+      },
+      {
+        "id": 2851635122,
+        "user": "mikey-",
+        "created_at": "2025-05-05T16:52:59Z",
+        "body": "Well that's as good a reason as any I suppose :)"
+      },
+      {
+        "id": 2877030795,
+        "user": "lishaduck",
+        "created_at": "2025-05-13T15:44:39Z",
+        "body": "I've started getting more failures: https://github.com/PSDTools/.github/actions/runs/14999109600\nI tried a bit of debugging, but couldn't figure it out."
+      },
+      {
+        "id": 3021314388,
+        "user": "TajangSec",
+        "created_at": "2025-07-01T00:56:22Z",
+        "body": "> Here’s a temporary fix that works for me: [stalomeow/metrics@edcae0f](https://github.com/stalomeow/metrics/commit/edcae0f874d69e509d25ddd5e750a2f41cd54e10)\n> \n> uses: stalomeow/metrics@projects-v2 # lowlighter/metrics@latest\n\nNow, workflow keeps reporting errors"
+      },
+      {
+        "id": 3021535996,
+        "user": "lishaduck",
+        "created_at": "2025-07-01T02:41:14Z",
+        "body": "> I've started getting more failures: [PSDTools/.github/actions/runs/14999109600](https://github.com/PSDTools/.github/actions/runs/14999109600) I tried a bit of debugging, but couldn't figure it out.\n\nI just realized why my workflows started failing, I'd set `timeout-minutes` to 30, but I still don't understand why it randomly started timing out instead of taking ~10 minutes."
+      },
+      {
+        "id": 3047612531,
+        "user": "yobson1",
+        "created_at": "2025-07-08T06:58:15Z",
+        "body": "@TajangSec and whoever else:\ni was having the same issue of the action hanging indefinitely until it would eventually timeout due to github's limit. i got it working on my fork yobson1/metrics@b99f7cd27980d0761a668ecc8f1c08f0fa57df15\n\nso you can try switching to `yobson1/metrics@b99f7cd27980d0761a668ecc8f1c08f0fa57df15`\n\ni also made a PR for the [gh-metrics/metrics](https://github.com/gh-metrics/metrics) repo"
+      },
+      {
+        "id": 3065887489,
+        "user": "stalomeow",
+        "created_at": "2025-07-12T17:17:51Z",
+        "body": "Recently, my action also started timing out. @yobson1 Thank you for sharing the solution. I’ve also committed it to my `stalomeow/metrics@projects-v2` branch."
+      },
+      {
+        "id": 3590541658,
+        "user": "dkhokhlov",
+        "created_at": "2025-11-28T21:34:10Z",
+        "body": "fixed in PR 1769 waiting for approval\n\nmeanwhile you can use my fork:\n\n```yaml\nuses: dkhokhlov/metrics@master\n```\n\n"
+      }
+    ]
+  },
+  {
+    "number": 1694,
+    "title": "Language metrics fails to query data and generate blank SVG, starting around August 2024",
+    "user": "SichangHe",
+    "author_association": "NONE",
+    "created_at": "2025-02-22T06:30:28Z",
+    "updated_at": "2025-02-24T08:19:31Z",
+    "labels": [],
+    "state": "open",
+    "body": "For example, https://github.com/Lissy93/Lissy93/commit/8c9a90412c6ae0d13255eff5588964924a7f9385 shows blank SVG replacing the previous content. It is a persistent problem starting from sometime in 2024. No errors are reported in GitHub Action logs.",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1694",
+    "comments_count": 1,
+    "comments": [
+      {
+        "id": 2677702261,
+        "user": "pchchv",
+        "created_at": "2025-02-24T08:19:29Z",
+        "body": "A huge problem appeared in the summer of 2024.\nAlso tried to look for the problem in the logs, but found nothing. \nMaybe GitHub started to output data differently and that's the problem, but I haven't found any evidence of that either.😢"
+      }
+    ]
+  },
+  {
+    "number": 1674,
+    "title": "Explicit Music should have [E] instead of complete \"explicit\"",
+    "user": "RSickenberg",
+    "author_association": "CONTRIBUTOR",
+    "created_at": "2024-12-07T11:34:44Z",
+    "updated_at": "2025-02-27T12:45:55Z",
+    "labels": [],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1673\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **RSickenberg** December  7, 2024</sup>\r\n<img width=\"238\" alt=\"image\" src=\"https://github.com/user-attachments/assets/52fd587d-1cf1-482e-b248-56d61c620b08\">\r\nHere is what is rendered on my side.</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1674",
+    "comments_count": 2,
+    "comments": [
+      {
+        "id": 2687833914,
+        "user": "RivenSkaye",
+        "created_at": "2025-02-27T12:34:34Z",
+        "body": "I'd suggest doing what Spotify does here, and adding it behind the artist name, as either the regional indicator E or, keeping it plaintext, `[E]`"
+      },
+      {
+        "id": 2687861153,
+        "user": "RSickenberg",
+        "created_at": "2025-02-27T12:45:54Z",
+        "body": "> I'd suggest doing what Spotify does here, and adding it behind the artist name, as either the regional indicator E or, keeping it plaintext, `[E]`\n\nEverything except plain text."
+      }
+    ]
+  },
+  {
+    "number": 1653,
+    "title": "PageSpeed Insight throws Unexpected error in github actions",
+    "user": "islamzaoui",
+    "author_association": "NONE",
+    "created_at": "2024-09-23T23:48:10Z",
+    "updated_at": "2024-09-23T23:48:10Z",
+    "labels": [],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1652\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **IslamZaoui** September 21, 2024</sup>\r\nHello, I facing this Unexpected error when github action generates metrics svg for my portfolio \r\n\r\n```\r\nmetrics/compute/IslamZaoui/plugins > pagespeed > completed (error)\r\n  {\r\n    name: 'pagespeed',\r\n    result: {\r\n      error: {\r\n        message: 'Unexpected error',\r\n        instance: TypeError: Cannot destructure property 'score' of 'request.data.lighthouseResult.categories[category]' as it is undefined.\r\n            at Object.default [as pagespeed] (file:///metrics/source/plugins/pagespeed/index.mjs:35:14)\r\n            at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\r\n            at async file:///metrics/source/plugins/core/index.mjs:67:30\r\n            at async Promise.all (index 0)\r\n            at async metrics (file:///metrics/source/app/metrics/index.mjs:81:22)\r\n            at async retry.retries.retries (file:///metrics/source/app/action/index.mjs:407:40)\r\n            at async retry (file:///metrics/source/app/action/index.mjs:57:22)\r\n            at async file:///metrics/source/app/action/index.mjs:406:28\r\n      }\r\n    }\r\n  }\r\n```\r\n\r\nthis my metrics.yaml file:\r\n```yaml\r\n# Visit https://github.com/lowlighter/metrics#-documentation for full reference\r\nname: Metrics\r\non:\r\n  # Schedule updates (each month)\r\n  schedule: [{ cron: '0 1 1 * *' }]\r\n  # Lines below let you run workflow manually and on each commit\r\n  workflow_dispatch:\r\n  push: { branches: ['main'] }\r\njobs:\r\n  github-metrics:\r\n    runs-on: ubuntu-latest\r\n    permissions:\r\n      contents: write\r\n    steps:\r\n      - uses: lowlighter/metrics@latest\r\n        with:\r\n          # Current configuration doesn't require a GitHub token\r\n          token: NOT_NEEDED\r\n\r\n          # Options\r\n          user: IslamZaoui\r\n          template: classic\r\n          base: ''\r\n          config_timezone: Etc/GMT-1\r\n          plugin_pagespeed: yes\r\n          plugin_pagespeed_detailed: yes\r\n          plugin_pagespeed_pwa: yes\r\n          plugin_pagespeed_url: https://islamzaoui.top/en\r\n          debug: yes\r\n```\r\n\r\nany suggestion?</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1653",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1644,
+    "title": "Anilist ❗",
+    "user": "ghost",
+    "author_association": "NONE",
+    "created_at": "2024-08-30T07:43:54Z",
+    "updated_at": "2025-03-13T15:49:36Z",
+    "labels": [],
+    "state": "open",
+    "body": "  MIME type                                                       │ image/svg+xml\r\n  [\r\n    {\r\n      name: 'anilist',\r\n      result: {\r\n        error: {\r\n          message: 'API error: 404 (Not Found.)',\r\n          instance: {\r\n            errors: [\r\n              {\r\n                message: 'Not Found.',\r\n                status: 404,\r\n                locations: [ { line: 2, column: 3 } ]\r\n              }\r\n            ],\r\n            data: { User: null }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  ]\r\n\r\n_Originally posted by @AnGgIt86 in https://github.com/lowlighter/metrics/discussions/1642_",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1644",
+    "comments_count": 4,
+    "comments": [
+      {
+        "id": 2594009215,
+        "user": "rainpaw",
+        "created_at": "2025-01-15T21:49:14Z",
+        "body": "provide your username : -\r\n```txt\r\n          plugin_anilist: yes\r\n          plugin_anilist_user: your_user_name\r\n          plugin_anilist_medias: anime\r\n          plugin_anilist_sections: favorites, watching\r\n          plugin_anilist_limit: 2\r\n\r\n```"
+      },
+      {
+        "id": 2721726237,
+        "user": "Nhattuan136",
+        "created_at": "2025-03-13T15:47:07Z",
+        "body": "          plugin_anilist: yes\n          plugin_anilist_user: your_user_name\n          plugin_anilist_medias: anime\n          plugin_anilist_sections: favorites, watching\n          plugin_anilist_limit: 2\n"
+      },
+      {
+        "id": 2721727361,
+        "user": "Nhattuan136",
+        "created_at": "2025-03-13T15:47:26Z",
+        "body": "          plugin_anilist: yes\n          plugin_anilist_user: your_user_name\n          plugin_anilist_medias: anime\n          plugin_anilist_sections: favorites, watching\n          plugin_anilist_limit: 2\n"
+      },
+      {
+        "id": 2721736369,
+        "user": "Nhattuan136",
+        "created_at": "2025-03-13T15:49:34Z",
+        "body": "https://github.com/lowlighter/metrics/issues/1644"
+      }
+    ]
+  },
+  {
+    "number": 1629,
+    "title": "Inaccurate results regarding certain metrics (notably, commit count)",
+    "user": "ooojustin",
+    "author_association": "NONE",
+    "created_at": "2024-07-06T00:55:30Z",
+    "updated_at": "2025-03-07T14:16:27Z",
+    "labels": [],
+    "state": "open",
+    "body": "I'm using this tool for the first time and getting some inaccurate results.\r\nI couldn't find a good answer elsewhere, so I decided to ask here.\r\n\r\nThe workflow file I am using is as follows:\r\n<details><summary>Workflow File</summary>\r\n<p>\r\n\r\n```yaml\r\nname: Metrics\r\non:\r\n  # Schedule daily updates\r\n  schedule: [{cron: \"0 0 * * *\"}]\r\n  # (optional) Run workflow manually\r\n  workflow_dispatch:\r\n  # (optional) Run workflow when pushing on master/main\r\n  push: {branches: [\"master\", \"main\"]}\r\njobs:\r\n  github-metrics:\r\n    runs-on: ubuntu-latest\r\n    environment: \r\n      name: production\r\n    permissions:\r\n      contents: write\r\n    steps:\r\n      - uses: lowlighter/metrics@latest\r\n        with:\r\n          token: ${{ secrets.METRICS_TOKEN }}\r\n          user: ooojustin\r\n          template: classic\r\n          base: header, activity, community, repositories, metadata\r\n          config_timezone: America/New_York\r\n``` \r\n\r\n</p>\r\n</details>\r\n\r\n\r\nSomehow, I end up with the following result:\r\n\r\n![bOXoSJSFJ2.png](https://f002.backblazeb2.com/file/justinooo-upload/07-2024/bOXoSJSFJ2.png)\r\n\r\nThere are 2 metrics that stand out as extremely off:\r\n1.) Commit count (not sure why)\r\n2.) Pull requests opened/reviewed (likely because I'm no longer part of the org that work was done at)\r\n\r\nSo I understand the PRs, but I am a bit confused where the commit count number is coming from.\r\nI should note my token has the following scopes: `gist, read:org, read:project, read:user, repo, user:email`\r\nAny info would be appreciated.\r\n\r\n_Originally posted by @ooojustin in https://github.com/lowlighter/metrics/discussions/1628_",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1629",
+    "comments_count": 1,
+    "comments": [
+      {
+        "id": 2706557877,
+        "user": "Nalendra29",
+        "created_at": "2025-03-07T14:16:25Z",
+        "body": "name: Metrics\non:\n  # Schedule daily updates\n  schedule: [{cron: \"0 0 * * *\"}]\n  # (optional) Run workflow manually\n  workflow_dispatch:\n  # (optional) Run workflow when pushing on master/main\n  push: {branches: [\"master\", \"main\"]}\njobs:\n  github-metrics:\n    runs-on: ubuntu-latest\n    environment: \n      name: production\n    permissions:\n      contents: write\n    steps:\n      - uses: lowlighter/metrics@latest\n        with:\n          token: ${{ secrets.METRICS_TOKEN }}\n          user: ooojustin\n          template: classic\n          base: header, activity, community, repositories, metadata\n          config_timezone: America/New_York"
+      }
+    ]
+  },
+  {
+    "number": 1598,
+    "title": "Broken - Local Setup for Development",
+    "user": "sethlabadie",
+    "author_association": "NONE",
+    "created_at": "2024-02-16T01:14:43Z",
+    "updated_at": "2024-02-16T01:14:43Z",
+    "labels": [],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1597\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **sethlabadie** February 15, 2024</sup>\r\nFollowing these instructions, https://github.com/lowlighter/metrics/blob/master/.github/readme/partials/documentation/setup/local.md\r\n\r\nThe install hangs at ```npm install```\r\n\r\nI get the following output:\r\n```npm WARN deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead\r\nnpm WARN deprecated domexception@4.0.0: Use your platform's native DOMException instead\r\nnpm WARN deprecated vue@2.7.16: Vue 2 has reached EOL and is no longer actively maintained. See https://v2.vuejs.org/eol/ for more details.\r\n\r\n> metrics@3.35.0-beta postinstall\r\n> node node_modules/puppeteer/install.js\r\n\r\nnode:internal/modules/cjs/loader:1152\r\n  throw err;\r\n  ^\r\n\r\nError: Cannot find module '/Users/sethlabadie/Dev/31_Metrics/metrics/node_modules/puppeteer/install.js'\r\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1149:15)\r\n    at Module._load (node:internal/modules/cjs/loader:990:27)\r\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:142:12)\r\n    at node:internal/main/run_main_module:28:49 {\r\n  code: 'MODULE_NOT_FOUND',\r\n  requireStack: []\r\n}\r\n\r\nNode.js v21.6.2\r\nnpm ERR! code 1\r\nnpm ERR! path /Users/sethlabadie/Dev/31_Metrics/metrics\r\nnpm ERR! command failed\r\nnpm ERR! command sh -c node node_modules/puppeteer/install.js\r\n\r\nnpm ERR! A complete log of this run can be found in: /Users/sethlabadie/.npm/_logs/2024-02-16T00_38_16_759Z-debug-0.log\r\n```\r\n\r\nThe module that it is looking for, ```node_modules/puppeteer/install.js```, is actually ```node_modules/puppeteer/install.mjs```.\r\n\r\nChanging the name of this file doesn't work, as it just reverts during the npm install process.\r\n\r\nAny ideas or help on how to solve this?\r\n\r\nLooks like it is more of an npm issue.</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1598",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1587,
+    "title": "repositories_skipped with pattern matching not working",
+    "user": "Pyenb",
+    "author_association": "NONE",
+    "created_at": "2023-12-21T11:05:33Z",
+    "updated_at": "2023-12-21T11:05:33Z",
+    "labels": [],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1586\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **Pyenb** December 21, 2023</sup>\r\nHey there,\r\nfirst of all, I love this repo <3\r\n\r\nBut after setting everything up and reading the docs over and over again I cannot figure out why my `repositories_skipped` repos are not being skipped, which causes my language stats to be incorrect. It's not a huge issue as I just ignored some languages with `plugin_languages_ignored` but it still messes with it a bit.\r\n\r\nThis is the section from my core config:\r\n\r\n```\r\n          user: Pyenb\r\n          template: classic\r\n          base: header, activity, community, repositories, metadata\r\n          config_timezone: Europe/Berlin\r\n          \r\n          repositories_affiliations: owner\r\n          repositories_skipped: |\r\n            @use.patterns\r\n\r\n            -Pyenb/Hyprland_configs\r\n            -HWR-Ubungen/*\r\n            -HomelabKinau/*\r\n```\r\n            \r\nAnd for me it seems like that the HWR-Ubungen (which I am one of the owners off) organization (or it's repos) are not being skipped, which causes my language stats for C to be way higher than they actually are. For now I fixed this with `plugin_languages_ignored: tex, css, html, c, perl, inno setup, javascript`, but which also ignores the C from my own repos that should be displayed.\r\n\r\nI've already tried setting the `repositories_affiliations: owner`, which didn't seem to change anything.\r\n\r\nAnything else i can try?\r\nThanks in advance.</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1587",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1578,
+    "title": "plugin_languages_colors not working properly for go lang",
+    "user": "ilanRosenbaum",
+    "author_association": "CONTRIBUTOR",
+    "created_at": "2023-12-05T22:29:12Z",
+    "updated_at": "2023-12-05T22:29:12Z",
+    "labels": [],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1577\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **ilanRosenbaum** December  5, 2023</sup>\r\nI am using `plugin_languages_colors: github` and have tried `plugin_languages_colors: github, go:blue` and in both cases go lang is white. Given go has a color in the github colors I don't know why it doesn't work with color github nor do I understand why I can't manually set it. I'm probably just doing something wrong but I'm not sure what. For repro see my profile repo: https://github.com/ilanRosenbaum/ilanRosenbaum</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1578",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1576,
+    "title": "Support limiting available plugins and options from config files for deployed instances (and inform users on the web app)",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2023-11-25T03:07:31Z",
+    "updated_at": "2023-11-25T03:07:31Z",
+    "labels": [
+      "🆕 v4"
+    ],
+    "state": "open",
+    "body": "Deployments should be able to configure which plugins are features are allowed on the web server\r\n\r\nUsers should be informed whether an option is available or not on given instance",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1576",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1575,
+    "title": "Route the `dev` environment variable when in a preview environment (like localhost / deploy preview)",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2023-11-25T03:01:56Z",
+    "updated_at": "2023-11-25T03:01:56Z",
+    "labels": [
+      "🆕 v4"
+    ],
+    "state": "open",
+    "body": null,
+    "html_url": "https://github.com/lowlighter/metrics/issues/1575",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1574,
+    "title": "Support markdown and insights outputs",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2023-11-25T02:55:26Z",
+    "updated_at": "2023-11-25T02:55:35Z",
+    "labels": [
+      "✨ metrics insights",
+      "🆕 v4"
+    ],
+    "state": "open",
+    "body": "Currently the markdown template is not really implemented\r\n\r\nAs for metrics insights, this will be converted into its own template/presets so it can be treated the same as regular plugins",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1574",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1573,
+    "title": "Umbrella issue for metrics v4 ",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2023-11-25T02:50:07Z",
+    "updated_at": "2023-11-27T07:25:34Z",
+    "labels": [
+      "🆕 v4"
+    ],
+    "state": "open",
+    "body": "Followup of:\r\n- #1542\r\n\r\nBelow is the list of identified missing features or bugs that is related to metrics v4\r\nItems that are already linked to an issue are referenced directly in the code at the revelant places\r\n\r\n- **Engine**\r\n  - Support conditionals execution (c.f. API quotas and image hash comparison)\r\n    - Possibly support loops ?  \r\n- **Utils**\r\n  - Support advanced filtering options for `matchPatterns()` (such as stars, followers, etc.)\r\n  - Implement a language guesser that doesn't rely directly on the filesystem and that is deno compliant\r\n  - Change `logs: none` to `logs: false` \r\n  - Support world graphs (c.f. stargazers plugin)\r\n  - Support recording web pages as gifs (c.f. skyline plugin)\r\n- **Features**\r\n  - #1574   \r\n- **Web UI** \r\n  - #1572\r\n  - #1576\r\n  - Create additional presets directly from the web UI \r\n    - Offer to publish users presets and reuse them kind like a marketplace ?\r\n  - CSS styling (need some rework because they were made on a yellowed-screen which fucked up the colors)\r\n  - Support drag and drop to change orders of plugins and processors\r\n  - Add a button to clone plugins/processors\r\n  - Support editing the raw YAML snippet and sync them back to the HTML inputs\r\n- **Documentation**\r\n  - Contribution guidelines\r\n  - Readme\r\n  - End-user documentation\r\n  - Developer documentation \r\n- **Testing**\r\n  - Parallel testing to enable in `deno.jsonc`\r\n  - Enable `Browser` tests again (issue with some promise resolution)\r\n  - #1571\r\n  - #1575 \r\n- **Deployments**\r\n  - Support vercel deno \r\n  - Add deploy helper to the cli\r\n  - Rework CI pipeline",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1573",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1572,
+    "title": "Support mobile devices on web version",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2023-11-25T02:34:15Z",
+    "updated_at": "2023-11-25T02:34:25Z",
+    "labels": [
+      "📊 metrics embed (web)",
+      "🆕 v4"
+    ],
+    "state": "open",
+    "body": "The new web page needs to be tested for mobile devices\r\nThe collapsed menu is not implemented too",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1572",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1571,
+    "title": "Patch `Deno.test` permissions for `--allow-run` ",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2023-11-25T02:23:47Z",
+    "updated_at": "2023-11-25T02:23:47Z",
+    "labels": [
+      "🐛 bug",
+      "↩️ external issue",
+      "🆕 v4"
+    ],
+    "state": "open",
+    "body": "Patch `Deno.test` permissions for `--allow-run` when https://github.com/denoland/deno/issues/21123 is resolved\r\nCurrently we need to use `permissions: \"inherit\"` but tests should be limited to the executables they plan to use",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1571",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1565,
+    "title": "Corlor language used not show",
+    "user": "M-DinhHoangViet",
+    "author_association": "NONE",
+    "created_at": "2023-11-07T09:12:25Z",
+    "updated_at": "2023-11-07T09:12:25Z",
+    "labels": [],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1563\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **M-DinhHoangViet** November  6, 2023</sup>\r\n![image](https://github.com/lowlighter/metrics/assets/134517889/307eb195-5fff-46d9-9ebc-6db96e56cb51)\r\n```          plugin_isocalendar: yes\r\n          plugin_languages: yes\r\n          plugin_languages_details: bytes-size, lines, percentage\r\n          plugin_languages_sections: most-used\r\n          plugin_languages_indepth: yes```</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1565",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1558,
+    "title": "Insufficient token scopes",
+    "user": "mateusfg7",
+    "author_association": "NONE",
+    "created_at": "2023-10-26T17:56:34Z",
+    "updated_at": "2023-11-07T12:39:19Z",
+    "labels": [],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1553\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **mateusfg7** October 19, 2023</sup>\r\nI've been facing this error for a while now, I have no idea what it is. I've already tried using `lowlighter/metrics@96dde98a034ab75fec7884f9161bc12759275d36`, I've already tried using `lowlighter/metrics@latest`, and `lowlighter/metrics@master`. All with the same problem.\r\n\r\n![Anotação 2023-10-19 212150](https://github.com/lowlighter/metrics/assets/40613276/ecc01835-9d24-4636-8866-f0746588ae1f)\r\n\r\n```graphql\r\n[\r\n  {\r\n    name: 'traffic',\r\n    result: { error: { message: 'Insufficient token scopes' } }\r\n  }\r\n]\r\n```\r\n\r\n![image](https://github.com/lowlighter/metrics/assets/40613276/e2f34774-1835-4b24-ab80-387650bf594b)\r\n\r\n\r\n[my `metrics.yml`](https://github.com/mateusfg7/mateusfg7/blob/master/.github/workflows/metrics.yml)</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1558",
+    "comments_count": 1,
+    "comments": [
+      {
+        "id": 1798417820,
+        "user": "mateusfg7",
+        "created_at": "2023-11-07T12:36:43Z",
+        "body": "I \"solved\" this issue and post on discussion tab (https://github.com/lowlighter/metrics/discussions/1553#discussioncomment-7498291), but I will still keep this issue open because I think that the error message doesn't match the problem that cause this.\r\n\r\nAnother observation, during the error, the achievement \"Polyglot\" do not render. And the \"Most used language\" section shows a message \"No push activity\".\r\nThe information about \"Releases\" is showed as `0`.\r\n\r\n"
+      }
+    ]
+  },
+  {
+    "number": 1519,
+    "title": "Language activity in the habits plugin not appearing",
+    "user": "BenjaminHalko",
+    "author_association": "NONE",
+    "created_at": "2023-08-27T23:24:45Z",
+    "updated_at": "2023-08-27T23:24:45Z",
+    "labels": [],
+    "state": "open",
+    "body": "Nothing seems to appear in the Language activity section of the habits plugin:\r\n![habits.svg](https://raw.githubusercontent.com/BenjaminHalko/BenjaminHalko/30097fd8809e013a4bed62ca2a909ddf8057b0f0/habits.svg)\r\n\r\nGitHub Action:\r\n```\r\nhabits:\r\n    runs-on: ubuntu-latest\r\n    permissions:\r\n      contents: write\r\n    steps:\r\n      - uses: lowlighter/metrics@master\r\n        with:\r\n          filename: habits.svg\r\n          token: ${{ secrets.METRICS_TOKEN }}\r\n          # Options\r\n          user: BenjaminHalko\r\n          template: classic\r\n          base: \"\"\r\n          config_timezone: America/Vancouver\r\n          plugin_habits: yes\r\n          plugin_habits_from: 200\r\n          plugin_habits_days: 14\r\n          plugin_habits_charts: yes\r\n          plugin_habits_trim: yes\r\n```\r\n\r\nThis is the case on both `latest` and `master`.\r\nMight be related to: #1488 ",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1519",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1488,
+    "title": "Recently used languages section doesn't display anything",
+    "user": "Nixinova",
+    "author_association": "CONTRIBUTOR",
+    "created_at": "2023-07-23T05:22:54Z",
+    "updated_at": "2025-10-14T23:36:41Z",
+    "labels": [],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1237\r\n\r\n----\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **Pandicon** September 20, 2022</sup>\r\nI haven't touched my config for a while and I've recently noticed that the \"Recently used languages\" section is empty:\r\n![image](https://user-images.githubusercontent.com/70060103/191077903-40910f9b-bd5a-46b6-a1e6-b76199788a82.png)\r\nHowever, I have made several commits in the last week. All were pushed to private repositories, but that didn't cause any issues before.\r\nThe commits seem to get detected, because the commits count gets increased. Any ideas why this could happen?\r\nI do have quite a lot of repositories (the plugin reports 95, while github shows 92, no idea why), the languages don't update even when I push to an older repo though.</div>\r\n\r\n----\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **Nixinova** July 23, 2023</sup>\r\nAlso having this problem, going back into last year.\r\n<img width=\"129\" alt=\"image\" src=\"https://github.com/lowlighter/metrics/assets/42429413/c90e1946-a668-4e23-9c21-c6038b34bd1d\">\r\nI have recent commits.\r\n<img width=\"261\" alt=\"image\" src=\"https://github.com/lowlighter/metrics/assets/42429413/69fe45ad-9faa-4d53-b355-ed5645fb395c\">\r\n\r\nE.g October metrics:\r\n<img width=\"373\" alt=\"image\" src=\"https://github.com/lowlighter/metrics/assets/42429413/2cbd0cd1-5375-47ea-8d93-2e96d402cfc9\">\r\n\r\nBroke sometime between 15 Sep 18:33 https://github.com/Nixinova/Nixinova/blob/2ad5ad8e02c8e6cdacb9b8986701d7b55293b1b7/github-metrics.svg and 18 Sep 18:31 https://github.com/Nixinova/Nixinova/blob/bffe99800c2a8e60ece4d875963384838978e878/github-metrics.svg UTC 2022.\r\n\r\nThere's no commits to this repo during that time though...\r\n\r\n<details>\r\n<summary>Metrics yaml workflow code</summary>\r\n\r\n```yml\r\nname: Metrics\r\non:\r\n  schedule: \r\n    - cron: \"0 18 * * */4\"\r\n  workflow_dispatch: # enabled\r\n\r\njobs:\r\n  github-metrics:\r\n    runs-on: ubuntu-latest\r\n    steps:\r\n      - uses: lowlighter/metrics@master\r\n        with:\r\n\r\n          token: ${{ secrets.METRICS_TOKEN }}\r\n          committer_token: ${{ secrets.GITHUB_TOKEN }}\r\n          committer_branch: metrics\r\n\r\n          template: classic\r\n          repositories_affiliations: ''\r\n          commits_authoring: Nixinova\r\n          config_timezone: Pacific/Auckland # NZT\r\n\r\n          plugin_lines: yes\r\n          plugin_traffic: yes\r\n\r\n          plugin_followup: yes\r\n          plugin_followup_indepth: yes\r\n          plugin_followup_sections: repositories, user\r\n\r\n          plugin_discussions: yes\r\n\r\n          plugin_languages: yes\r\n          plugin_languages_details: percentage, lines\r\n          plugin_languages_sections: most-used, recently-used\r\n          plugin_languages_categories: programming\r\n          plugin_languages_recent_categories: programming, markup\r\n          plugin_languages_indepth: yes\r\n\r\n          plugin_gists: yes\r\n\r\n          plugin_topics: yes\r\n          plugin_topics_sort: stars\r\n          plugin_topics_mode: mastered\r\n          plugin_topics_limit: 0 # disable\r\n\r\n          plugin_isocalendar: yes\r\n          plugin_isocalendar_duration: full-year\r\n  \r\n          plugin_activity: yes\r\n          plugin_activity_limit: 5\r\n          plugin_activity_timestamps: yes\r\n\r\n          plugin_code: yes\r\n\r\n          plugin_reactions: yes\r\n          plugin_reactions_details: count\r\n          plugin_reactions_limit: 200\r\n\r\n          plugin_wakatime: yes\r\n          plugin_wakatime_token: ${{ secrets.WAKATIME_TOKEN }}\r\n          plugin_wakatime_days: 14\r\n          plugin_wakatime_limit: 4\r\n          plugin_wakatime_repositories_visibility: public\r\n\r\n```\r\n\r\n</details>\r\n</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1488",
+    "comments_count": 1,
+    "comments": [
+      {
+        "id": 3403980947,
+        "user": "GTazz",
+        "created_at": "2025-10-14T23:36:41Z",
+        "body": "Any ideas? I'm trying to fix it in my fork"
+      }
+    ]
+  },
+  {
+    "number": 1371,
+    "title": "fix(plugins/notable): fails when org uses SAML",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2023-01-29T17:17:50Z",
+    "updated_at": "2024-01-05T05:37:09Z",
+    "labels": [
+      "🐛 bug",
+      "🎩 plugin notable"
+    ],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1362\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **jayvdb** January 17, 2023</sup>\r\nI would rather not give my metrics token SAML approval.  Can an org be skipped somehow?\r\n```\r\n  metrics/compute/jayvdb/plugins > notable > completed (error)\r\n  {\r\n    name: 'notable',\r\n    result: {\r\n      error: {\r\n        message: 'Unexpected error',\r\n        instance: GraphqlResponseError: Request failed due to following response errors:\r\n         - Resource protected by organization SAML enforcement. You must grant your Personal Access token access to this organization.\r\n            at /metrics/node_modules/@octokit/graphql/dist-node/index.js:70:13\r\n            at runMicrotasks (<anonymous>)\r\n            at processTicksAndRejections (node:internal/process/task_queues:96:5)\r\n            at async Object.default [as notable] (file:///metrics/source/plugins/notable/index.mjs:20:62)\r\n            at async file:///metrics/source/plugins/core/index.mjs:67:30\r\n            at async Promise.all (index 0)\r\n            at async metrics (file:///metrics/source/app/metrics/index.mjs:81:22)\r\n            at async retry.retries.retries (file:///metrics/source/app/action/index.mjs:407:40)\r\n            at async retry (file:///metrics/source/app/action/index.mjs:57:22)\r\n            at async file:///metrics/source/app/action/index.mjs:406:28 {\r\n          request: {\r\n            query: 'query NotableContributions {\\n' +\r\n              '  user(login: \"jayvdb\") {\\n' +\r\n              '    repositoriesContributedTo(after: \"Y3Vyc29yOnYyOpICzgktIp4=\" first: 5, contributionTypes: [COMMIT, ISSUE, PULL_REQUEST], includeUserRepositories: false, orderBy: { field: STARGAZERS, direction: DESC'... 482 more characters\r\n          },\r\n```</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1371",
+    "comments_count": 1,
+    "comments": [
+      {
+        "id": 1878153965,
+        "user": "scarf005",
+        "created_at": "2024-01-05T05:37:08Z",
+        "body": "Hi, i'm interested in opening a PR [(~~totally not because my workflow failed~~)](https://github.com/scarf005/scarf005/actions/runs/7418372124/job/20186206007#step:2:993). May I get a pointer on where to look at, and preferred solution?\r\n\r\nalso, should i open a PR on `v4-dev` or `main`? "
+      }
+    ]
+  },
+  {
+    "number": 1360,
+    "title": "fix(metrics/insights): unexpected error in sponsors plugin response",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2023-01-17T02:28:37Z",
+    "updated_at": "2023-01-17T02:28:58Z",
+    "labels": [
+      "🐛 bug",
+      "💕 plugin sponsors"
+    ],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1350\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **PhilipDeegan** January 15, 2023</sup>\r\nGoing to the link: https://metrics.lecoq.io/insights?user=PhilipDeegan\r\n\r\nShows at the top \"Unexpected error\".\r\n\r\nAnd it seems that some of my contributions are missing (nvidia/thrust for example), so it could be related.\r\n\r\nFeel free to close if this is a known issue.</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1360",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1340,
+    "title": "feat(plugins/community/chess): complicated moves in chess does not work",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2023-01-08T17:10:45Z",
+    "updated_at": "2023-01-08T17:10:45Z",
+    "labels": [
+      "🐛 bug",
+      "🎲 community plugins"
+    ],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1335\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **salastro** December 30, 2022</sup>\r\n* [Castling move](https://en.wikipedia.org/wiki/Castling) shows only the king moving without the rook taking the correct position, it shows the correct position after moving the rook again (it suddenly jumps over the king).\r\n* [Promotion moves](https://en.wikipedia.org/wiki/Promotion_(chess)) does not show the new piece, only the pawn changes to, for example, queen when it is moved again.</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1340",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1334,
+    "title": "feat(app/metrics): support to sign commit by gpg-private-key",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2022-12-29T23:42:13Z",
+    "updated_at": "2022-12-29T23:42:13Z",
+    "labels": [
+      "📊 metrics embed (action)",
+      "🧧 feature request"
+    ],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1330\r\n\r\nWhen comitter is a bot account ",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1334",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1292,
+    "title": "feat(app/metrics): support new PAT format",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2022-11-21T04:57:14Z",
+    "updated_at": "2024-02-10T03:38:07Z",
+    "labels": [
+      "⚙️ configuration",
+      "🧧 feature request"
+    ],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1263\r\n\r\nCheck what needs to be done to support new PAT format with granular rights",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1292",
+    "comments_count": 3,
+    "comments": [
+      {
+        "id": 1345795900,
+        "user": "lowlighter",
+        "created_at": "2022-12-12T03:02:57Z",
+        "body": "Not possible (at least for now):\r\nhttps://docs.github.com/fr/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql\r\n\r\n![image](https://user-images.githubusercontent.com/22963968/206951581-cfca6cee-a4a9-449e-b3dc-7ddf072fb150.png)\r\n"
+      },
+      {
+        "id": 1353488206,
+        "user": "lowlighter",
+        "created_at": "2022-12-15T17:53:39Z",
+        "body": "https://github.com/github/roadmap/issues/622"
+      },
+      {
+        "id": 1936840852,
+        "user": "dustessavdh",
+        "created_at": "2024-02-10T03:38:06Z",
+        "body": "It seems like they support fine-grained tokens for authenticating now.\r\nThey closed https://github.com/github/roadmap/issues/622 and the docs now state:\r\n[![image](https://github.com/lowlighter/metrics/assets/25427808/026bc583-35b0-4610-927d-c695cd1c6d25)](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)\r\n"
+      }
+    ]
+  },
+  {
+    "number": 1229,
+    "title": "fix(app/metrics): irrevelant warnings",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2022-09-14T05:25:25Z",
+    "updated_at": "2022-11-21T04:55:13Z",
+    "labels": [
+      "🐛 bug"
+    ],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1222\r\n\r\nSome irrevelant warnings may appear (especially for repositories options because some of them are actually related to base option rather than repositories plugin)",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1229",
+    "comments_count": 1,
+    "comments": [
+      {
+        "id": 1321239328,
+        "user": "lowlighter",
+        "created_at": "2022-11-20T20:48:02Z",
+        "body": "Issue seems to still be present"
+      }
+    ]
+  },
+  {
+    "number": 1162,
+    "title": "feat(plugins/stargazers): support alternative geocoding service",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2022-07-29T19:21:04Z",
+    "updated_at": "2022-12-18T21:55:53Z",
+    "labels": [
+      "✨ plugin stargazers",
+      "🧧 feature request"
+    ],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1149\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **jayvdb** July 22, 2022</sup>\r\nThe stargazers plugin now supports a map visualisation which looks really good.  However I would rather not set up a Google Billing account for it.\r\n\r\nI think it would be useful to add support for alternative services, especially OpenStreetMap Nominatim which has lots of [providers](https://wiki.openstreetmap.org/wiki/Nominatim#Alternatives/Third-party_providers) some with reasonable free daily limits, including [MapQuest](https://developer.mapquest.com/documentation/open/nominatim-search/) which has a free limit of [15,000 per month](https://developer.mapquest.com/plans).  The base url endpoint could be a setting so that the user can choose which provider works best for them.  Most [JS Nominatim clients](https://www.npmjs.com/search?q=nominatim) support this.</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1162",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1157,
+    "title": "fix(plugins/notable): possible issues",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2022-07-25T23:15:14Z",
+    "updated_at": "2022-12-18T21:56:13Z",
+    "labels": [
+      "🐛 bug",
+      "🎩 plugin notable"
+    ],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1148\r\n\r\n<div type='discussions-op-text'>\r\n\r\n<sup>Originally posted by **jayvdb** July 22, 2022</sup>\r\nFor the notable plugin, I set `debug: true` and `plugin_notable_types: commit, issue, pull_request`, and obviously have `indepth` enabled, and now I am seeing quite a few of the following in the log\r\n\r\n```\r\nmetrics/compute/jayvdb/plugins > notable > indepth > successfully processed ansible/ansible-lint\r\nTypeError: contributions.filter is not a function\r\n      at Object.default [as notable] (file:///metrics/source/plugins/notable/index.mjs:83:41)\r\n      at runMicrotasks (<anonymous>)\r\n      at processTicksAndRejections (node:internal/process/task_queues:96:5)\r\n      at async file:///metrics/source/plugins/core/index.mjs:67:30\r\n      at async Promise.all (index 0)\r\n      at async metrics (file:///metrics/source/app/metrics/index.mjs:64:22)\r\n      at async retry.retries.retries (file:///metrics/source/app/action/index.mjs:398:34)\r\n      at async retry (file:///metrics/source/app/action/index.mjs:57:22)\r\n      at async file:///metrics/source/app/action/index.mjs:397:20\r\n  metrics/compute/jayvdb/plugins > notable > indepth > failed to compute for pdm-project/pdm\r\n  metrics/compute/jayvdb/plugins > notable > indepth > successfully processed TheLartians/ModernCppStarter\r\n```\r\nRun: https://github.com/jayvdb/jayvdb/runs/7468279468?check_suite_focus=true\r\n\r\nI don't have any commits in that repo, but I did create an issue: https://github.com/pdm-project/pdm/issues/created_by/jayvdb\r\n\r\npdm now appears in my svg https://github.com/jayvdb/jayvdb/commit/01ec97176e18086d5cd4bd0fc70d35b065ea5698 without any of the numerical scores inside its circle.\r\n\r\nSo I am guessing that `plugin_notable_types` of `issue` & `pull_request` are incompatible with `indepth` at the moment, unless there was a commit also in the repo.\r\n\r\nBut the problem is a bit more nuanced than that, as I only have a rejected issue in https://github.com/TheLartians/ModernCppStarter/issues/131, and only an unmerged closed PR in https://github.com/ansible/ansible-lint/pull/2196 - both repos that were \"successfully processed\".</div>",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1157",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1093,
+    "title": "feat(plugins/sponsors): newsletter display",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2022-06-13T01:40:54Z",
+    "updated_at": "2022-12-18T21:57:37Z",
+    "labels": [
+      "💕 plugin sponsors",
+      "🧧 feature request"
+    ],
+    "state": "open",
+    "body": "Seems that it's possible to use `sponsorshipNewsletters` to get updates/news, could be nice to add a section to display them",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1093",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 1072,
+    "title": "fix(app/metrics): private repositories may be always ignored",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2022-05-24T16:27:15Z",
+    "updated_at": "2025-05-22T14:31:57Z",
+    "labels": [
+      "🐛 bug"
+    ],
+    "state": "open",
+    "body": "A lot of users seems to report that their private repositories are not taken into account, even with a `repo` scope",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1072",
+    "comments_count": 5,
+    "comments": [
+      {
+        "id": 1630187285,
+        "user": "nico-zck",
+        "created_at": "2023-07-11T05:56:18Z",
+        "body": "I've noticed that the \"Most Used Languages\" stats for my metrics are weird, while the basic stats look good.It only analyzed 86 commits from thousand commits.\r\n<img width=\"468\" alt=\"image\" src=\"https://github.com/lowlighter/metrics/assets/10665923/c266e4db-f240-4de2-a41d-d1a60978ac5d\">\r\n\r\nWhen `plugin_languages_indepth` is enabled, private repositories cannot be cloned even if a token is provided and access is enabled.\r\nThe action log of `debug: yes` as follows:\r\n```\r\nmetrics/compute/XXX/plugins > languages > indepth analyzer > failed to clone https://github.com/XXX/REPO(Error: Cloning into '.'...\r\n  fatal: could not read Username for 'https://github.com/': No such device or address\r\n  )\r\n```\r\n\r\nI'm not sure the relationship between them, but I just want to provide some cues for this bug. \r\nThanks for your awesome work!"
+      },
+      {
+        "id": 1810166693,
+        "user": "mia1024",
+        "created_at": "2023-11-14T13:03:57Z",
+        "body": "Hi, I'm trying to set up actions for my own profile and I also ran into the same issues. I took a quick look at the code and the issues seems to be that no token is passed when cloning a repo, causing clones to all private repos to fail:\r\n\r\nhttps://github.com/lowlighter/metrics/blob/master/source/plugins/languages/analyzer/analyzer.mjs#L94\r\n\r\nAccording to [this Stackoverflow post](https://stackoverflow.com/a/66156992/7416363), all you need to do is change the URL to include the token. "
+      },
+      {
+        "id": 1841590200,
+        "user": "ilanRosenbaum",
+        "created_at": "2023-12-05T20:49:20Z",
+        "body": "Encountering the same issue myself"
+      },
+      {
+        "id": 1843815967,
+        "user": "ilanRosenbaum",
+        "created_at": "2023-12-06T22:51:24Z",
+        "body": "Just created a PR to fix this: https://github.com/lowlighter/metrics/pull/1579"
+      },
+      {
+        "id": 2901459700,
+        "user": "iauu",
+        "created_at": "2025-05-22T14:31:56Z",
+        "body": "Not sure still the same issue, but private repositories still don't get shown for me when use in depth mode even when the token with appropriate permission given.\nI might try to debug why later when I have time."
+      }
+    ]
+  },
+  {
+    "number": 1062,
+    "title": "feat(app/metrics): grouped users metrics support",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2022-05-19T03:49:10Z",
+    "updated_at": "2022-12-18T21:55:21Z",
+    "labels": [
+      "🧧 feature request"
+    ],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/1056\r\n\r\nChange typing of `user`/`token` to allow multiple values:\r\n```yml\r\nuser: foo, bar\r\ntoken: |\r\n  {\r\n    \"foo\": ${{ secrets.FOO_TOKEN }},\r\n    \"bar\": ${{ secrets.BAR_TOKEN }}\r\n  }\r\n```\r\n\r\nFor action:\r\n- Try to test out multiple user data fetching and use adequate merging strategy (probably best to test with a subset of plugins first).\r\n- Instantiate and use octokit with correct token to fetch out private data if asked by user.\r\n\r\nFor web instances:\r\n- Make a \"round-robin\" balancing over tokens to support more than 5000 requests\r\n\r\n\r\n\r\n",
+    "html_url": "https://github.com/lowlighter/metrics/issues/1062",
+    "comments_count": 0,
+    "comments": []
+  },
+  {
+    "number": 859,
+    "title": "fix(plugins/followup): some stats from `indepth` are incorrect",
+    "user": "lowlighter",
+    "author_association": "OWNER",
+    "created_at": "2022-02-08T18:43:35Z",
+    "updated_at": "2023-06-02T21:29:22Z",
+    "labels": [
+      "🎟️ plugin followup"
+    ],
+    "state": "open",
+    "body": "### Discussed in https://github.com/lowlighter/metrics/discussions/855\r\n\r\nSeems that some the logic is inverted, we should not have a `-`:\r\nhttps://github.com/lowlighter/metrics/blob/044b3ba8dc127272c25350faab1316fddd9fa54f/source/plugins/followup/index.mjs#L74\r\n\r\nAdditionally failing to fetch collaborators should default on owner\r\n\r\nFinally drafts/skipped issues/pr seems a bit wonky, probably need to see what is possible to do now",
+    "html_url": "https://github.com/lowlighter/metrics/issues/859",
+    "comments_count": 1,
+    "comments": [
+      {
+        "id": 1574337685,
+        "user": "orsnaro",
+        "created_at": "2023-06-02T21:29:22Z",
+        "body": "![image](https://github.com/lowlighter/metrics/assets/77698890/c62ae2c0-0106-4183-a82b-bf9db064c3e5)\r\n\r\n**here I'm most certain this batch file line counter in language plugin section (most-used) is incorrect** \r\n\r\nwhats common cause of this ?\r\n\r\n[workflow .yml file ](https://github.com/orsnaro/orsnaro/blob/main/.github/workflows/metrics_action.yml)\r\n\r\n"
+      }
+    ]
+  }
+]

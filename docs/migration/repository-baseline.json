@@ -1,0 +1,766 @@
+{
+  "timestamp_utc": "2026-09-21T15:35:56.698Z",
+  "authenticated_user": "yuanweize",
+  "upstream": {
+    "repo": "lowlighter/metrics",
+    "master_sha": "366f8b9dfe3a59656c67d5dcad9950f59c9bc96d",
+    "metadata": null,
+    "branches": [
+      {
+        "name": "dependabot-npm_and_yarn-basic-ftp-5.3.1",
+        "sha": "c60963eed2b8216a58a6d4610a8f0b86ad79c1ea"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-brace-expansion-1.1.13",
+        "sha": "263c60816070876fc5b6e325d6847e78c79a7355"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-file-type-21.3.2",
+        "sha": "0ea8d2aaa4c50d3d3ac870d23953e3fb0c0cb28e"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-flatted-3.4.2",
+        "sha": "dd1e2a0165610a7da5248f9953303478dd31ad87"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-follow-redirects-1.16.0",
+        "sha": "777079926ce8f5946fc0ab8725416a73d3461a81"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-2b9612f831",
+        "sha": "1cfe5cebda5edeae91931fbfac26e8d1122b44ad"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-15db5a0d07",
+        "sha": "9daf863097bf1cf63293bb54f80261db70f125ce"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-0637ee475e",
+        "sha": "08a0727d706a112a7318403dc248ebe5ddb4968d"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-a07fd7252a",
+        "sha": "c25ef671bcbe326c59909d556dd1478299e883c1"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-c6f6658ed3",
+        "sha": "a681b5ad270c65cd2c7f24ac4b0136459a26d655"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-ca49cfd856",
+        "sha": "14645230e55afbebd64b8e86e585ed269a828283"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-d6c6632000",
+        "sha": "b5646094bb044e1ae9fdc54dfaeea60349b609dd"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-dae47d5549",
+        "sha": "a46461bcddaf93503c6ec27e3f32fec274b2d9d6"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-picomatch-2.3.2",
+        "sha": "8ad50dcec75b66c689613f3a4bd56c3e50d57022"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-postcss-8.5.14",
+        "sha": "cd9d1a8b4086bd6511fbe13622d6b0572a4e4198"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-simple-git-3.36.0",
+        "sha": "4415f8576f4f945e693fa4229b76d3307dda1e75"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-svgo-3.3.3",
+        "sha": "cf34c8baa64b4ceab23d06a3d3994b4cf3f5b1b3"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-tootallnate-once-2.0.1",
+        "sha": "ca07990155918f7ba34ac789679eac03ec355f5d"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-validator-13.15.23",
+        "sha": "2a9763c85b730bb4966cca7775f1dd4af40b6071"
+      },
+      {
+        "name": "examples",
+        "sha": "1dac69e51ce95a1dc71e901ad4e5ad2968def9e5"
+      },
+      {
+        "name": "feat-fine-grained-token-support",
+        "sha": "eecfa2931a763ffc596011bda8fb55e99bd70b76"
+      },
+      {
+        "name": "latest",
+        "sha": "65836723097537a54cd8eb90f61839426b4266b6"
+      },
+      {
+        "name": "leetcode-china",
+        "sha": "23a858e369b21e92357833c4c1b4789059030cfb"
+      },
+      {
+        "name": "main",
+        "sha": "a53a5853a99509233cdef4b056411facc481b833"
+      },
+      {
+        "name": "master",
+        "sha": "366f8b9dfe3a59656c67d5dcad9950f59c9bc96d"
+      },
+      {
+        "name": "presets",
+        "sha": "705551865abd4c96dcd38bfb31d7a8c2ab41d118"
+      },
+      {
+        "name": "v4-dev",
+        "sha": "3af9fa099a9b4354171d51cca707d749db77fccc"
+      },
+      {
+        "name": "v4",
+        "sha": "05b761ce7066e3c897047ecd2431b93af4a5b02b"
+      }
+    ],
+    "tags": [
+      {
+        "name": "v3.34",
+        "sha": "65836723097537a54cd8eb90f61839426b4266b6"
+      },
+      {
+        "name": "v3.33",
+        "sha": "dd64c50bf38be91795e73980f3483d028e7e55ee"
+      },
+      {
+        "name": "v3.32",
+        "sha": "3dd06164327476b9730a815a70ad39cbf5032f7e"
+      },
+      {
+        "name": "v3.31",
+        "sha": "c1240845bc6547ad60bfcf8d26838c82be83d573"
+      },
+      {
+        "name": "v3.30",
+        "sha": "f99da6c94154d2a35384b004b2cfbd7cc83830b9"
+      },
+      {
+        "name": "v3.29",
+        "sha": "4c94975e259100ec9ba654cddcc8ed8bf720193e"
+      },
+      {
+        "name": "v3.28",
+        "sha": "cf98a50eb63499d520bea42d8129d1cb8682de0f"
+      },
+      {
+        "name": "v3.27",
+        "sha": "7e4bab7d85c7d114cc928299765f830c107270a4"
+      },
+      {
+        "name": "v3.26",
+        "sha": "26bbaac4a9cf67bce1676e0435eff56fe043e8bc"
+      },
+      {
+        "name": "v3.25",
+        "sha": "cb6115082a9c7e027d1a53c3c869cdec5f44bd43"
+      },
+      {
+        "name": "v3.24",
+        "sha": "f44182260ef443309174c7c989bd43068d72643e"
+      },
+      {
+        "name": "v3.23",
+        "sha": "58025c0755c249c0a7c0ed5d8f5b8848e1bfb374"
+      },
+      {
+        "name": "v3.22",
+        "sha": "eea0e216b8b9daa748417a2e53ca32d3eee0a1da"
+      },
+      {
+        "name": "v3.21",
+        "sha": "3553137563208ff64cb470b8f23fd8c503627f32"
+      },
+      {
+        "name": "v3.20",
+        "sha": "1119b06f8196990505f5b9a557b223de8f13139d"
+      },
+      {
+        "name": "v3.19",
+        "sha": "f3f3c3564ee20514b64980b24d18c83a8b800e9f"
+      },
+      {
+        "name": "v3.18",
+        "sha": "0c4ce7ce02e34cc5a9d1654461c69c6b2890dce6"
+      },
+      {
+        "name": "v3.17",
+        "sha": "62a397d3ea2dbfdbc3b347a573ced1943ca2274c"
+      },
+      {
+        "name": "v3.16",
+        "sha": "c09205ddbd2ffeffe0eacc12745f736eef60b69b"
+      },
+      {
+        "name": "v3.15",
+        "sha": "4eeea4c0cd385c2c0a8d56c6b03b6484f8c61bdd"
+      },
+      {
+        "name": "v3.14",
+        "sha": "03146c097db11245c4e33bafeb0c12110b62f3c1"
+      },
+      {
+        "name": "v3.13",
+        "sha": "2ca57561baef58ffd9bff330352b3f2272534481"
+      },
+      {
+        "name": "v3.12",
+        "sha": "2e82b9143ba7c506fcb66d7e644a4d663a86f5c5"
+      },
+      {
+        "name": "v3.11",
+        "sha": "401d95090bea3b6ec36fa2143f4ea95406f7dc7c"
+      },
+      {
+        "name": "v3.10",
+        "sha": "a4d08dd9a688887a98f368ce9c07dff06e3d3932"
+      },
+      {
+        "name": "v3.9",
+        "sha": "2749fcf2aa6473c7a1d0daafab622b6394d552bd"
+      },
+      {
+        "name": "v3.8",
+        "sha": "f62f47783dd0abe86e81fcb79f6f012ff6439aba"
+      },
+      {
+        "name": "v3.7",
+        "sha": "dddf5174a547290a9ff631ad5015cd3cc436788c"
+      },
+      {
+        "name": "v3.6",
+        "sha": "f117a56089e215e9d98f821548314b90c2c5a1c7"
+      },
+      {
+        "name": "v3.5",
+        "sha": "4ab4bd68c3b8be24ed1691dfb1ef6d96ac181d89"
+      },
+      {
+        "name": "v3.4",
+        "sha": "1dacfe1298ab28ad9efbe61c4bb38c310c89b264"
+      },
+      {
+        "name": "v3.3",
+        "sha": "9b574376230687a8e9cb354fa27ad5f951778d9a"
+      },
+      {
+        "name": "v3.2",
+        "sha": "26f27f17b2f20095950a05bb1f5f744378ae422f"
+      },
+      {
+        "name": "v3.1",
+        "sha": "db876713ebb058ea669c16708e1a6142ae50d5e9"
+      },
+      {
+        "name": "v3.0",
+        "sha": "05739a77fb245cfa517ee1f39b2f3eb86db9f216"
+      },
+      {
+        "name": "v2.9",
+        "sha": "8135bf19a683c5ae46d7f5ce7ed6e2476e4492eb"
+      },
+      {
+        "name": "v2.8",
+        "sha": "6eac410f03b5e927032459aa2b85f633406b44dc"
+      },
+      {
+        "name": "v2.7",
+        "sha": "afb11b57f798fdb4ef4b7593d0c855f07edaa7df"
+      },
+      {
+        "name": "v2.6",
+        "sha": "31d7c4bec9eeb489130142394c724fa0fd2eeae1"
+      },
+      {
+        "name": "v2.5",
+        "sha": "bbb3154e96a535ff805aa00e905c4b32f74755ab"
+      },
+      {
+        "name": "v2.4",
+        "sha": "3a180efb5b9a45bf31ef16e1ed8fddba353af3f1"
+      },
+      {
+        "name": "v2.3",
+        "sha": "21f2fa7bec957f768e566b20b7948284043a7eed"
+      },
+      {
+        "name": "v2.2",
+        "sha": "883a671e0f02329aa160490893b40fc9efb6e8fa"
+      },
+      {
+        "name": "v2.1",
+        "sha": "26bc499ef7b6b013bc696e48624df6eb9b0fba92"
+      },
+      {
+        "name": "v2.0",
+        "sha": "516d3abc669249b63e235076c124c4513d2c0439"
+      },
+      {
+        "name": "v1.9",
+        "sha": "69e63541dc3cf7472a15d8c2c05f90a0c6381158"
+      },
+      {
+        "name": "v1.8",
+        "sha": "04a1f3ce90198be7eaf0ba14640a7a0a0c3ff85c"
+      },
+      {
+        "name": "v1.7",
+        "sha": "49e1a8e3e135365f55a2e4f53a0c5325d9a7b07d"
+      },
+      {
+        "name": "v1.6",
+        "sha": "1555333b31c2dec72360da625cf0e51cd5effebe"
+      },
+      {
+        "name": "v1.5",
+        "sha": "77e5fccd37cf9f8f310fe12c4759d09791ba8c1b"
+      },
+      {
+        "name": "v1.4",
+        "sha": "d76b7e29ff644ee6b13de64b17f2b67ec91b51cf"
+      },
+      {
+        "name": "v1.3",
+        "sha": "d744865b02f98ab3c7b0fe776456239c4f93ea71"
+      },
+      {
+        "name": "v1.2",
+        "sha": "66cd9d4f43080a6ede14279bc3256fd5f845db41"
+      },
+      {
+        "name": "v1.1",
+        "sha": "12d6e4a4bdf0353b65d2b054220785d846c9414d"
+      },
+      {
+        "name": "v1.0",
+        "sha": "a6ffa0ffd27a2fa7871ce698f28c27a4e95d3c49"
+      }
+    ],
+    "releases": [
+      {
+        "tag_name": "v3.34",
+        "name": "Version 3.34",
+        "published_at": "2023-09-13T02:39:37Z"
+      },
+      {
+        "tag_name": "v3.33",
+        "name": "Version 3.33",
+        "published_at": "2023-03-28T07:50:25Z"
+      },
+      {
+        "tag_name": "v3.32",
+        "name": "Version 3.32",
+        "published_at": "2023-01-18T10:28:25Z"
+      },
+      {
+        "tag_name": "v3.31",
+        "name": "Version 3.31",
+        "published_at": "2022-12-22T05:03:46Z"
+      },
+      {
+        "tag_name": "v3.30",
+        "name": "Version 3.30",
+        "published_at": "2022-12-13T07:34:41Z"
+      },
+      {
+        "tag_name": "v3.29",
+        "name": "Version 3.29",
+        "published_at": "2022-11-20T10:03:58Z"
+      },
+      {
+        "tag_name": "v3.28",
+        "name": "Version 3.28 — 🥳 2y of metrics!",
+        "published_at": "2022-09-08T21:45:13Z"
+      },
+      {
+        "tag_name": "v3.27",
+        "name": "Version 3.27",
+        "published_at": "2022-08-15T02:08:31Z"
+      },
+      {
+        "tag_name": "v3.26",
+        "name": "Version 3.26",
+        "published_at": "2022-07-11T20:50:15Z"
+      },
+      {
+        "tag_name": "v3.25",
+        "name": "Version 3.25",
+        "published_at": "2022-07-01T18:54:44Z"
+      },
+      {
+        "tag_name": "v3.24",
+        "name": "Version 3.24",
+        "published_at": "2022-06-01T07:26:16Z"
+      },
+      {
+        "tag_name": "v3.23",
+        "name": "Version 3.23",
+        "published_at": "2022-04-26T06:48:07Z"
+      },
+      {
+        "tag_name": "v3.22",
+        "name": "Version 3.22",
+        "published_at": "2022-03-24T06:01:42Z"
+      },
+      {
+        "tag_name": "v3.21",
+        "name": "Version 3.21",
+        "published_at": "2022-02-27T20:13:52Z"
+      },
+      {
+        "tag_name": "v3.20",
+        "name": "Version 3.20",
+        "published_at": "2022-02-09T03:49:07Z"
+      },
+      {
+        "tag_name": "v3.19",
+        "name": "Version 3.19",
+        "published_at": "2022-02-03T03:09:58Z"
+      },
+      {
+        "tag_name": "v3.18",
+        "name": "Version 3.18",
+        "published_at": "2022-01-20T02:54:00Z"
+      },
+      {
+        "tag_name": "v3.17",
+        "name": "Version 3.17",
+        "published_at": "2022-01-05T18:29:34Z"
+      },
+      {
+        "tag_name": "v3.16",
+        "name": "Version 3.16",
+        "published_at": "2021-11-16T02:14:10Z"
+      },
+      {
+        "tag_name": "v3.15",
+        "name": "Version 3.15",
+        "published_at": "2021-10-28T06:13:59Z"
+      },
+      {
+        "tag_name": "v3.14",
+        "name": "Version 3.14 — 🥳 1y of metrics!",
+        "published_at": "2021-10-01T22:27:22Z"
+      },
+      {
+        "tag_name": "v3.13",
+        "name": "Version 3.13",
+        "published_at": "2021-08-20T00:19:45Z"
+      },
+      {
+        "tag_name": "v3.12",
+        "name": "Version 3.12",
+        "published_at": "2021-08-02T16:08:20Z"
+      },
+      {
+        "tag_name": "v3.11",
+        "name": "Version 3.11",
+        "published_at": "2021-07-23T15:29:21Z"
+      },
+      {
+        "tag_name": "v3.10",
+        "name": "Version 3.10",
+        "published_at": "2021-05-31T12:34:33Z"
+      },
+      {
+        "tag_name": "v3.9",
+        "name": "Version 3.9",
+        "published_at": "2021-05-11T18:24:41Z"
+      },
+      {
+        "tag_name": "v3.8",
+        "name": "Version 3.8",
+        "published_at": "2021-05-02T09:30:15Z"
+      },
+      {
+        "tag_name": "v3.7",
+        "name": "Version 3.7",
+        "published_at": "2021-04-16T21:28:06Z"
+      },
+      {
+        "tag_name": "v3.6",
+        "name": "Version 3.6",
+        "published_at": "2021-04-02T17:06:40Z"
+      },
+      {
+        "tag_name": "v3.5",
+        "name": "Version 3.5",
+        "published_at": "2021-03-14T18:19:11Z"
+      },
+      {
+        "tag_name": "v3.4",
+        "name": "Version 3.4",
+        "published_at": "2021-02-20T23:05:29Z"
+      },
+      {
+        "tag_name": "v3.3",
+        "name": "Version 3.3",
+        "published_at": "2021-01-31T23:53:05Z"
+      },
+      {
+        "tag_name": "v3.2",
+        "name": "Version 3.2",
+        "published_at": "2021-01-14T19:49:53Z"
+      },
+      {
+        "tag_name": "v3.1",
+        "name": "Version 3.1",
+        "published_at": "2021-01-05T19:40:35Z"
+      },
+      {
+        "tag_name": "v3.0",
+        "name": "Version 3.0",
+        "published_at": "2021-01-02T19:58:21Z"
+      },
+      {
+        "tag_name": "v2.9",
+        "name": "Version 2.9",
+        "published_at": "2020-12-28T00:36:06Z"
+      },
+      {
+        "tag_name": "v2.8",
+        "name": "Version 2.8",
+        "published_at": "2020-12-15T20:08:19Z"
+      },
+      {
+        "tag_name": "v2.7",
+        "name": "Version 2.7",
+        "published_at": "2020-12-12T11:24:31Z"
+      },
+      {
+        "tag_name": "v2.6",
+        "name": "Version 2.6",
+        "published_at": "2020-12-10T13:01:28Z"
+      },
+      {
+        "tag_name": "v2.5",
+        "name": "Version 2.5",
+        "published_at": "2020-12-08T18:39:18Z"
+      },
+      {
+        "tag_name": "v2.4",
+        "name": "Version 2.4",
+        "published_at": "2020-11-06T21:40:00Z"
+      },
+      {
+        "tag_name": "v2.3",
+        "name": "Version 2.3",
+        "published_at": "2020-11-03T20:35:48Z"
+      },
+      {
+        "tag_name": "v2.2",
+        "name": "Version 2.2",
+        "published_at": "2020-10-31T10:58:00Z"
+      },
+      {
+        "tag_name": "v2.1",
+        "name": "Version 2.1",
+        "published_at": "2020-10-23T16:13:48Z"
+      },
+      {
+        "tag_name": "v2.0",
+        "name": "Version 2.0",
+        "published_at": "2020-10-20T20:17:28Z"
+      },
+      {
+        "tag_name": "v1.9",
+        "name": "Version 1.9",
+        "published_at": "2020-10-19T22:33:13Z"
+      },
+      {
+        "tag_name": "v1.8",
+        "name": "Version 1.8",
+        "published_at": "2020-10-18T09:10:58Z"
+      },
+      {
+        "tag_name": "v1.7",
+        "name": "Version 1.7",
+        "published_at": "2020-10-13T21:12:11Z"
+      },
+      {
+        "tag_name": "v1.6",
+        "name": "Version 1.6",
+        "published_at": "2020-10-13T16:51:26Z"
+      },
+      {
+        "tag_name": "v1.5",
+        "name": "Version 1.5",
+        "published_at": "2020-10-12T20:41:33Z"
+      },
+      {
+        "tag_name": "v1.4",
+        "name": "Version 1.4",
+        "published_at": "2020-10-12T17:17:32Z"
+      },
+      {
+        "tag_name": "v1.3",
+        "name": "Version 1.3",
+        "published_at": "2020-10-10T19:17:57Z"
+      },
+      {
+        "tag_name": "v1.2",
+        "name": "Version 1.2",
+        "published_at": "2020-10-09T17:38:58Z"
+      },
+      {
+        "tag_name": "v1.1",
+        "name": "Version 1.1",
+        "published_at": "2020-10-09T12:11:56Z"
+      },
+      {
+        "tag_name": "v1.0",
+        "name": "Version 1.0",
+        "published_at": "2020-09-18T07:57:45Z"
+      }
+    ]
+  },
+  "fork": {
+    "repo": "yuanweize/metrics",
+    "master_sha": "366f8b9dfe3a59656c67d5dcad9950f59c9bc96d",
+    "metadata": {
+      "createdAt": "2026-09-21T15:08:24Z",
+      "defaultBranchRef": {
+        "name": "master"
+      },
+      "isFork": true,
+      "name": "metrics",
+      "owner": {
+        "id": "MDQ6VXNlcjMwMDY3MjAz",
+        "login": "yuanweize"
+      },
+      "parent": {
+        "id": "MDEwOlJlcG9zaXRvcnkyOTM4NjAxOTc=",
+        "name": "metrics",
+        "owner": {
+          "id": "MDQ6VXNlcjIyOTYzOTY4",
+          "login": "lowlighter"
+        }
+      },
+      "pushedAt": "2026-09-21T15:11:43Z",
+      "url": "https://github.com/yuanweize/metrics"
+    },
+    "branches": [
+      {
+        "name": "dependabot-npm_and_yarn-basic-ftp-5.3.1",
+        "sha": "c60963eed2b8216a58a6d4610a8f0b86ad79c1ea"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-brace-expansion-1.1.13",
+        "sha": "263c60816070876fc5b6e325d6847e78c79a7355"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-file-type-21.3.2",
+        "sha": "0ea8d2aaa4c50d3d3ac870d23953e3fb0c0cb28e"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-flatted-3.4.2",
+        "sha": "dd1e2a0165610a7da5248f9953303478dd31ad87"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-follow-redirects-1.16.0",
+        "sha": "777079926ce8f5946fc0ab8725416a73d3461a81"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-2b9612f831",
+        "sha": "1cfe5cebda5edeae91931fbfac26e8d1122b44ad"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-15db5a0d07",
+        "sha": "9daf863097bf1cf63293bb54f80261db70f125ce"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-0637ee475e",
+        "sha": "08a0727d706a112a7318403dc248ebe5ddb4968d"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-a07fd7252a",
+        "sha": "c25ef671bcbe326c59909d556dd1478299e883c1"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-c6f6658ed3",
+        "sha": "a681b5ad270c65cd2c7f24ac4b0136459a26d655"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-ca49cfd856",
+        "sha": "14645230e55afbebd64b8e86e585ed269a828283"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-d6c6632000",
+        "sha": "b5646094bb044e1ae9fdc54dfaeea60349b609dd"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-multi-dae47d5549",
+        "sha": "a46461bcddaf93503c6ec27e3f32fec274b2d9d6"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-picomatch-2.3.2",
+        "sha": "8ad50dcec75b66c689613f3a4bd56c3e50d57022"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-postcss-8.5.14",
+        "sha": "cd9d1a8b4086bd6511fbe13622d6b0572a4e4198"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-simple-git-3.36.0",
+        "sha": "4415f8576f4f945e693fa4229b76d3307dda1e75"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-svgo-3.3.3",
+        "sha": "cf34c8baa64b4ceab23d06a3d3994b4cf3f5b1b3"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-tootallnate-once-2.0.1",
+        "sha": "ca07990155918f7ba34ac789679eac03ec355f5d"
+      },
+      {
+        "name": "dependabot-npm_and_yarn-validator-13.15.23",
+        "sha": "2a9763c85b730bb4966cca7775f1dd4af40b6071"
+      },
+      {
+        "name": "examples",
+        "sha": "1dac69e51ce95a1dc71e901ad4e5ad2968def9e5"
+      },
+      {
+        "name": "feat-fine-grained-token-support",
+        "sha": "eecfa2931a763ffc596011bda8fb55e99bd70b76"
+      },
+      {
+        "name": "fix/lines-null-author-and-sections",
+        "sha": "0c43a8413048a467eae9704c7d4593550ec9b69c"
+      },
+      {
+        "name": "latest",
+        "sha": "65836723097537a54cd8eb90f61839426b4266b6"
+      },
+      {
+        "name": "leetcode-china",
+        "sha": "23a858e369b21e92357833c4c1b4789059030cfb"
+      },
+      {
+        "name": "main",
+        "sha": "a53a5853a99509233cdef4b056411facc481b833"
+      },
+      {
+        "name": "master",
+        "sha": "366f8b9dfe3a59656c67d5dcad9950f59c9bc96d"
+      },
+      {
+        "name": "presets",
+        "sha": "705551865abd4c96dcd38bfb31d7a8c2ab41d118"
+      },
+      {
+        "name": "v4-dev",
+        "sha": "3af9fa099a9b4354171d51cca707d749db77fccc"
+      },
+      {
+        "name": "v4",
+        "sha": "05b761ce7066e3c897047ecd2431b93af4a5b02b"
+      }
+    ]
+  }
+}

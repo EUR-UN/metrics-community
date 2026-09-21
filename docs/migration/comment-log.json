@@ -1,0 +1,325 @@
+[
+  {
+    "type": "pull_request",
+    "upstream_number": 1843,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "timestamp": "2026-09-21T15:53:48.912Z",
+    "status": "dry_run_simulated"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1840,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "timestamp": "2026-09-21T15:53:49.554Z",
+    "status": "dry_run_simulated"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1838,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "timestamp": "2026-09-21T15:53:51.132Z",
+    "status": "dry_run_simulated"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1835,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "timestamp": "2026-09-21T15:53:51.692Z",
+    "status": "dry_run_simulated"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1834,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "timestamp": "2026-09-21T15:53:52.349Z",
+    "status": "dry_run_simulated"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1843,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1843#issuecomment-5763440018",
+    "timestamp": "2026-09-21T15:56:28.373Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1840,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1840#issuecomment-5763441973",
+    "timestamp": "2026-09-21T15:56:36.173Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1838,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1838#issuecomment-5763443541",
+    "timestamp": "2026-09-21T15:56:42.387Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1835,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1835#issuecomment-5763445096",
+    "timestamp": "2026-09-21T15:56:49.030Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1834,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1834#issuecomment-5763446565",
+    "timestamp": "2026-09-21T15:56:55.372Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1829,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1829#issuecomment-5763449490",
+    "timestamp": "2026-09-21T15:57:07.801Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1807,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1807#issuecomment-5763451012",
+    "timestamp": "2026-09-21T15:57:14.222Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1788,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1788#issuecomment-5763452761",
+    "timestamp": "2026-09-21T15:57:20.732Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1783,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1783#issuecomment-5763454280",
+    "timestamp": "2026-09-21T15:57:26.653Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1782,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1782#issuecomment-5763456007",
+    "timestamp": "2026-09-21T15:57:32.646Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1781,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1781#issuecomment-5763457610",
+    "timestamp": "2026-09-21T15:57:39.197Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1769,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1769#issuecomment-5763459235",
+    "timestamp": "2026-09-21T15:57:45.823Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1760,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1760#issuecomment-5763460668",
+    "timestamp": "2026-09-21T15:57:52.144Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1754,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1754#issuecomment-5763462104",
+    "timestamp": "2026-09-21T15:57:58.537Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1724,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1724#issuecomment-5763463548",
+    "timestamp": "2026-09-21T15:58:04.704Z",
+    "status": "posted"
+  },
+  {
+    "type": "pull_request",
+    "upstream_number": 1677,
+    "target_url": "https://github.com/yuanweize/metrics-community",
+    "comment_url": "https://github.com/lowlighter/metrics/pull/1677#issuecomment-5763470171",
+    "timestamp": "2026-09-21T15:58:31.984Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1713,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/28",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1713#issuecomment-5763471574",
+    "timestamp": "2026-09-21T15:58:37.988Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1706,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/29",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1706#issuecomment-5763473015",
+    "timestamp": "2026-09-21T15:58:44.289Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1694,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/30",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1694#issuecomment-5763474336",
+    "timestamp": "2026-09-21T15:58:49.982Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1674,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/31",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1674#issuecomment-5763475687",
+    "timestamp": "2026-09-21T15:58:55.953Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1653,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/32",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1653#issuecomment-5763477072",
+    "timestamp": "2026-09-21T15:59:02.362Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1644,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/1",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1644#issuecomment-5763478436",
+    "timestamp": "2026-09-21T15:59:08.309Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1629,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/2",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1629#issuecomment-5763479820",
+    "timestamp": "2026-09-21T15:59:14.346Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1598,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/3",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1598#issuecomment-5763481247",
+    "timestamp": "2026-09-21T15:59:20.090Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1587,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/4",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1587#issuecomment-5763483040",
+    "timestamp": "2026-09-21T15:59:27.425Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1578,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/5",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1578#issuecomment-5763484553",
+    "timestamp": "2026-09-21T15:59:33.446Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1576,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/6",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1576#issuecomment-5763486071",
+    "timestamp": "2026-09-21T15:59:39.257Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1575,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/7",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1575#issuecomment-5763487415",
+    "timestamp": "2026-09-21T15:59:44.946Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1574,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/8",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1574#issuecomment-5763489187",
+    "timestamp": "2026-09-21T15:59:51.771Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1573,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/9",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1573#issuecomment-5763490589",
+    "timestamp": "2026-09-21T15:59:57.660Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1572,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/10",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1572#issuecomment-5763492221",
+    "timestamp": "2026-09-21T16:00:03.841Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1571,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/11",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1571#issuecomment-5763493772",
+    "timestamp": "2026-09-21T16:00:10.640Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1565,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/12",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1565#issuecomment-5763495404",
+    "timestamp": "2026-09-21T16:00:16.561Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1558,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/13",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1558#issuecomment-5763496777",
+    "timestamp": "2026-09-21T16:00:22.418Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1519,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/14",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1519#issuecomment-5763498323",
+    "timestamp": "2026-09-21T16:00:29.232Z",
+    "status": "posted"
+  },
+  {
+    "type": "issue",
+    "upstream_number": 1488,
+    "target_url": "https://github.com/yuanweize/metrics-community/issues/15",
+    "comment_url": "https://github.com/lowlighter/metrics/issues/1488#issuecomment-5763545863",
+    "timestamp": "2026-09-21T16:03:44.938Z",
+    "status": "posted"
+  }
+]
