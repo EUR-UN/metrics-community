@@ -52,7 +52,7 @@ export default async function({login, q, imports, data, account}, {token, enable
         continue
 
       let candidateGames = games
-      if (section === "recently-played" && Array.isArray(recentGames)) {
+      if (section === "recently-played" && Array.isArray(recentGames) && recentGames.length) {
         candidateGames = recentGames
       }
 

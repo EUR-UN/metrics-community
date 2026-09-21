@@ -26,6 +26,23 @@ describe("Steam plugin unit & regression tests", () => {
     expect(recentlyPlayed.some(g => g.name.includes("PUBG"))).toBe(false)
   })
 
+  test("when recent_days is 0 (disabled cutoff), shows last played game across all owned games", () => {
+    const _recent_days = 0
+    const recentCutoff = Number(_recent_days) > 0 ? (now - Number(_recent_days) * 86400) : 0
+
+    const games = [
+      { id: 578080, name: "PUBG: BATTLEGROUNDS", playtime: 133, played: sevenMonthsAgo },
+      { id: 10, name: "Old Game", playtime: 20, played: sevenMonthsAgo - 1000 }
+    ]
+
+    const recentlyPlayed = games
+      .filter(({ played }) => (recentCutoff > 0 ? played >= recentCutoff : true))
+      .sort((a, b) => b.played - a.played)
+
+    expect(recentlyPlayed).toHaveLength(2)
+    expect(recentlyPlayed[0].name).toBe("PUBG: BATTLEGROUNDS")
+  })
+
   test("recently-played includes games with playtime < playtime.threshold (newly played games)", () => {
     const _playtime_threshold = 2 // 2 hours
     const games = [
