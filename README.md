@@ -1,6 +1,12 @@
-# 📊 Metrics [<img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=280144&theme=dark" alt="" align="right" width="190" height="41">](https://www.producthunt.com/posts/github-metrics?utm_source=badge-featured&utm_medium=badge&utm_source=badge-github-metrics)
+> [!IMPORTANT]
+> **Community Maintained Fork**: This repository is an **independent community-maintained fork** of [lowlighter/metrics](https://github.com/lowlighter/metrics) focused on compatibility, security fixes, and continued maintenance. It is not an official successor and is not affiliated with or endorsed by the original maintainer.  
+> Sincere thanks and gratitude to [@lowlighter](https://github.com/lowlighter) and all original contributors for creating this incredible tool.
+>
+> 📖 See [UPSTREAM.md](UPSTREAM.md) for baseline and synchronization policy, [MIGRATION.md](MIGRATION.md) for migrating your workflows, and [docs/migration/UPSTREAM_BACKLOG.md](docs/migration/UPSTREAM_BACKLOG.md) for the complete backlog triage matrix.
 
-[![Continuous integration](https://github.com/lowlighter/metrics/actions/workflows/ci.yml/badge.svg)](https://github.com/lowlighter/metrics/actions/workflows/ci.yml)
+# 📊 Metrics (Community Edition)
+
+[![Continuous integration](https://github.com/yuanweize/metrics-community/actions/workflows/ci.yml/badge.svg)](https://github.com/yuanweize/metrics-community/actions/workflows/ci.yml)
 
 Generate metrics that can be embedded everywhere, including your GitHub profile readme! Supports users, organizations, and even repositories!
 
