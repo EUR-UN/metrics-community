@@ -13,12 +13,29 @@ export default async function({login, data, imports, graphql, q, queries, accoun
     //Update limit if repositories projects were specified manually
     limit = Math.max(repositories.length, limit)
 
-    //Retrieve user owned projects from graphql api
+    //Retrieve user owned projects from graphql api (prioritizing ProjectsV2)
     console.debug(`metrics/compute/${login}/plugins > projects > querying api`)
-    const {[account]: {projects}} = await graphql(queries.projects["user.legacy"]({login, limit, account}))
-    const {[account]: {projectsV2}} = await graphql(queries.projects.user({login, limit, account}))
-    projects.nodes.unshift(...projectsV2.nodes)
-    projects.totalCount += projectsV2.totalCount
+    let projects = {nodes: [], totalCount: 0}
+    try {
+      const {[account]: {projectsV2}} = await graphql(queries.projects.user({login, limit, account}))
+      if (projectsV2) {
+        projects.nodes.push(...(projectsV2.nodes || []))
+        projects.totalCount += projectsV2.totalCount || 0
+      }
+    }
+    catch (error) {
+      console.debug(`metrics/compute/${login}/plugins > projects > projectsV2 query failed:`, error)
+    }
+    try {
+      const {[account]: legacyProjects} = await graphql(queries.projects["user.legacy"]({login, limit, account}))
+      if (legacyProjects?.projects) {
+        projects.nodes.push(...(legacyProjects.projects.nodes || []))
+        projects.totalCount += legacyProjects.projects.totalCount || 0
+      }
+    }
+    catch (error) {
+      console.debug(`metrics/compute/${login}/plugins > projects > legacy projects query unavailable (sunsetted)`)
+    }
 
     //Retrieve repositories projects from graphql api
     for (const identifier of repositories) {
@@ -77,7 +94,7 @@ export default async function({login, data, imports, graphql, q, queries, accoun
         total = project.items.totalCount
       }
       //Append
-      list.push({name: project.name, updated, description: project.body, progress: {enabled, todo, doing, done, total}, items})
+      list.push({name: project.name ?? project.title, updated, description: project.body, progress: {enabled, todo, doing, done, total}, items})
     }
 
     //Limit
