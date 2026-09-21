@@ -137,12 +137,12 @@ export default async function({login, data, rest, q, account, imports}, {enabled
             //Pushed commits
             case "PushEvent": {
               let {size, commits, ref} = payload
-              commits = commits.filter(({author: {email}}) => imports.filters.text(email, ignored))
+              commits = (commits ?? []).filter(commit => commit && commit.author && imports.filters.text(commit.author.email, ignored))
               if (!commits.length)
                 return null
-              if (commits.slice(-1).pop()?.message.startsWith("Merge branch "))
+              if (commits.slice(-1).pop()?.message?.startsWith?.("Merge branch "))
                 commits = commits.slice(-1)
-              return {type: "push", actor, timestamp, repo, size, branch: ref.match(/refs.heads.(?<branch>.*)/)?.groups?.branch ?? null, commits: commits.reverse().map(({sha, message}) => ({sha: sha.substring(0, 7), message}))}
+              return {type: "push", actor, timestamp, repo, size, branch: typeof ref === "string" ? ref.match(/refs.heads.(?<branch>.*)/)?.groups?.branch ?? null : null, commits: commits.reverse().map(({sha, message}) => ({sha: sha ? sha.substring(0, 7) : "", message: message ?? ""}))}
             }
             //Released
             case "ReleaseEvent": {

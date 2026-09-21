@@ -66,20 +66,22 @@ export class RecentAnalyzer extends Analyzer {
     const patches = [
       ...await Promise.allSettled(
         commits
-          .flatMap(({payload}) => payload.commits)
-          .filter(({committer}) => filters.text(committer?.email, this.authoring, {debug: false}))
+          .flatMap(({payload}) => payload?.commits ?? [])
+          .filter(commit => commit && (commit.committer || commit.author))
+          .filter(commit => filters.text(commit.committer?.email ?? commit.author?.email, this.authoring, {debug: false}))
           .map(commit => commit.url)
+          .filter(url => typeof url === "string" && url.length > 0)
           .map(async commit => (await this.rest.request(commit)).data),
       ),
     ]
       .filter(({status}) => status === "fulfilled")
       .map(({value}) => value)
-      .filter(({parents}) => parents.length <= 1)
-      .map(({sha, commit: {message, committer}, verification, files}) => ({
+      .filter(item => item && (item.parents?.length ?? 0) <= 1)
+      .map(({sha, commit: {message = "", committer = {}} = {}, verification, files = []}) => ({
         sha,
-        name: `${message} (authored by ${committer.name} on ${committer.date})`,
+        name: `${message} (authored by ${committer?.name ?? "unknown"} on ${committer?.date ?? ""})`,
         verified: verification?.verified ?? null,
-        editions: files.map(({filename, patch = ""}) => {
+        editions: (files ?? []).map(({filename, patch = ""}) => {
           const edition = {
             path: filename,
             added: {lines: 0, bytes: 0},
