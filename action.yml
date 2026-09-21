@@ -1579,8 +1579,13 @@ runs:
             fi
             echo "Using pre-built version $METRICS_TAG, will pull docker image from GitHub registry"
             if ! docker image pull $METRICS_IMAGE; then
-              echo "Failed to fetch docker image from GitHub registry, will rebuild it locally"
-              METRICS_IMAGE=metrics:$METRICS_VERSION
+              if [[ $METRICS_SOURCE == "yuanweize" ]] && docker image pull ghcr.io/yuanweize/metrics-community:latest; then
+                echo "Falling back to latest community pre-built image"
+                METRICS_IMAGE=ghcr.io/yuanweize/metrics-community:latest
+              else
+                echo "Failed to fetch docker image from GitHub registry, will rebuild it locally"
+                METRICS_IMAGE=metrics:$METRICS_VERSION
+              fi
             fi
           # Rebuild image
           else

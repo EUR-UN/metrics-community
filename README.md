@@ -10,6 +10,25 @@
 
 Generate metrics that can be embedded everywhere, including your GitHub profile readme! Supports users, organizations, and even repositories!
 
+## 🚀 快速开始 (Quick Start)
+
+只需在你的工作流（`.github/workflows/metrics.yml`）中将 `uses:` 替换为社区版 `@latest`，即可自动获得所有现代修复与上游同步，所有参数 100% 向后兼容：
+
+```yaml
+- name: Generate metrics
+  uses: yuanweize/metrics-community@latest   # 👈 自动跟随最新版
+  with:
+    token: ${{ secrets.METRICS_TOKEN }}
+    # ... 其余所有已有配置和插件 100% 兼容，无需任何修改！
+```
+
+> [!TIP]
+> - **推荐使用 `@latest`**：自动同步最新 Bug 修复与 GitHub API 适配，且 GHCR 自动推送预编译镜像，约 1 分钟即可高速跑完。
+> - **支持版本锁定**：如需绝对固定的生产环境，可使用发布 Tag，如 `uses: yuanweize/metrics-community@v3.35.0-community.2`。
+> - 📖 详细迁移指引详见 [MIGRATION.md](MIGRATION.md)，自动化无冲突同步策略详见 [UPSTREAM.md](UPSTREAM.md)。
+
+---
+
 <table>
   <tr>
     <th align="center">For user accounts</th>

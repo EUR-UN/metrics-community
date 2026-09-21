@@ -8,6 +8,7 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 jobs:
   sync:
@@ -20,10 +21,11 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure Git
+      - name: Configure Git & Rerere
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config rerere.enabled true
 
       - name: Fetch upstream changes
         run: |
@@ -52,21 +54,65 @@ jobs:
           echo "Upstream commits ahead of main: $NEW_COMMITS"
           echo "new_commits_count=$NEW_COMMITS" >> $GITHUB_OUTPUT
 
-      - name: Create Sync Pull Request
+      - name: Attempt Clean Merge on Sync Branch
         if: steps.check_divergence.outputs.new_commits_count > 0
+        id: attempt_merge
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           BRANCH_NAME="sync/upstream-$(date +%Y%m%d)"
-          git checkout -b "$BRANCH_NAME" upstream/master
-          git push -u origin "$BRANCH_NAME"
-          cat << 'EOF' > /tmp/pr_body.md
-          Automated synchronization with upstream `lowlighter/metrics:master`.
+          git checkout -b "$BRANCH_NAME" main
           
-          Please review and run CI tests before merging into `main` to prevent regressions.
+          # Attempt automated merge
+          if git merge upstream/master -m "chore(sync): automated sync with upstream lowlighter/metrics ($(date +%Y-%m-%d))"; then
+            echo "merge_status=clean" >> $GITHUB_OUTPUT
+            git push -u origin "$BRANCH_NAME"
+            cat << 'EOF' > /tmp/pr_body.md
+          ### 🔄 Automated Upstream Sync (Clean Merge)
+
+          Upstream changes from `lowlighter/metrics:master` have been cleanly integrated into this sync branch without merge conflicts.
+
+          - **Upstream commits count**: ${{ steps.check_divergence.outputs.new_commits_count }}
+          - **Merge strategy**: 3-way recursive / ORT merge
+          - **Conflict status**: Clean (0 conflicts)
+
+          Please review CI test suite and merge into `main`.
           EOF
-          gh pr create \
-            --base main \
-            --head "$BRANCH_NAME" \
-            --title "chore(sync): sync with upstream lowlighter/metrics ($(date +%Y-%m-%d))" \
-            --body-file /tmp/pr_body.md
+            gh pr create \
+              --base main \
+              --head "$BRANCH_NAME" \
+              --title "chore(sync): clean sync with upstream lowlighter/metrics ($(date +%Y-%m-%d))" \
+              --body-file /tmp/pr_body.md
+          else
+            echo "merge_status=conflict" >> $GITHUB_OUTPUT
+            CONFLICTING_FILES=$(git diff --name-only --diff-filter=U)
+            echo "Conflicting files:"
+            echo "$CONFLICTING_FILES"
+            git merge --abort
+            
+            # Create a branch for manual resolution
+            git checkout -b "$BRANCH_NAME-conflicts" upstream/master
+            git push -u origin "$BRANCH_NAME-conflicts"
+            
+            cat << EOF > /tmp/pr_body.md
+          ### ⚠️ Upstream Sync Requires Conflict Resolution
+
+          Upstream changes from \`lowlighter/metrics:master\` contain conflicts with community fork modifications.
+
+          #### ⚡ Conflicting Files:
+          \`\`\`
+          $CONFLICTING_FILES
+          \`\`\`
+
+          #### 🛠️ Resolution Steps:
+          1. Check out community main: \`git checkout main\`
+          2. Pull sync branch: \`git merge upstream/master\`
+          3. Resolve conflicts, run tests (\`npm test\`), and commit.
+          4. Push to \`main\`.
+          EOF
+            gh pr create \
+              --base main \
+              --head "$BRANCH_NAME-conflicts" \
+              --title "chore(sync): [CONFLICTS] sync with upstream lowlighter/metrics ($(date +%Y-%m-%d))" \
+              --body-file /tmp/pr_body.md
+          fi

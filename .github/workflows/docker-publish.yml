@@ -20,12 +20,14 @@ jobs:
     name: Build & Push GHCR Container
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       packages: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -46,8 +48,8 @@ jobs:
             type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
             type=raw,value=main,enable=${{ github.ref == 'refs/heads/main' }}
             type=raw,value=v3.35
-            type=raw,value=v3.35.0-community.1
             type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
@@ -58,3 +60,12 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Update floating latest tag and branch
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -fa latest -m "Release: latest community build (${{ github.sha }})" ${{ github.sha }}
+          git push origin latest --force
+          git push origin refs/heads/main:refs/heads/latest --force
