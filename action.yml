@@ -1558,9 +1558,8 @@ runs:
         METRICS_TAG=v$(echo $METRICS_VERSION | sed -r 's/^([0-9]+[.][0-9]+).*/\1/')
         echo "Image tag: $METRICS_TAG"
 
-        # Image name
-        # Community or official action
-        if [[ $METRICS_SOURCE == "yuanweize" || $METRICS_SOURCE == "lowlighter" ]]; then
+        # Community (EUR-UN or yuanweize) or official action
+        if [[ $METRICS_SOURCE =~ ^(eur-un|EUR-UN|yuanweize|lowlighter)$ ]]; then
           # Use registry with pre-built images
           if [[ ! $METRICS_USE_PREBUILT_IMAGE =~ ^([Ff]alse|[Oo]ff|[Nn]o|0)$ ]]; then
             # Is released version
@@ -1572,16 +1571,18 @@ runs:
               METRICS_TAG="$METRICS_TAG-beta"
               echo "Image tag (updated): $METRICS_TAG"
             fi
-            if [[ $METRICS_SOURCE == "yuanweize" ]]; then
+            if [[ $METRICS_SOURCE =~ ^(eur-un|EUR-UN)$ ]]; then
+              METRICS_IMAGE=ghcr.io/eur-un/metrics-community:$METRICS_TAG
+            elif [[ $METRICS_SOURCE == "yuanweize" ]]; then
               METRICS_IMAGE=ghcr.io/yuanweize/metrics-community:$METRICS_TAG
             else
               METRICS_IMAGE=ghcr.io/lowlighter/metrics:$METRICS_TAG
             fi
             echo "Using pre-built version $METRICS_TAG, will pull docker image from GitHub registry"
             if ! docker image pull $METRICS_IMAGE; then
-              if [[ $METRICS_SOURCE == "yuanweize" ]] && docker image pull ghcr.io/yuanweize/metrics-community:latest; then
+              if [[ $METRICS_SOURCE =~ ^(eur-un|EUR-UN|yuanweize)$ ]] && (docker image pull ghcr.io/eur-un/metrics-community:latest || docker image pull ghcr.io/yuanweize/metrics-community:latest); then
                 echo "Falling back to latest community pre-built image"
-                METRICS_IMAGE=ghcr.io/yuanweize/metrics-community:latest
+                METRICS_IMAGE=ghcr.io/eur-un/metrics-community:latest
               else
                 echo "Failed to fetch docker image from GitHub registry, will rebuild it locally"
                 METRICS_IMAGE=metrics:$METRICS_VERSION
