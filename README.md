@@ -1,31 +1,37 @@
 > [!IMPORTANT]
-> **Community Maintained Fork**: This repository is an **independent community-maintained fork** of [lowlighter/metrics](https://github.com/lowlighter/metrics) focused on compatibility, security fixes, and continued maintenance. It is not an official successor and is not affiliated with or endorsed by the original maintainer.  
-> Sincere thanks and gratitude to [@lowlighter](https://github.com/lowlighter) and all original contributors for creating this incredible tool.
+> **Metrics — Community Maintenance Fork**  
+> This repository is an **independent community-maintained fork** of [lowlighter/metrics](https://github.com/lowlighter/metrics), maintained under [@EUR-UN](https://github.com/EUR-UN) focused on compatibility, security fixes, and continued maintenance. It is not an official successor and is not affiliated with or endorsed by the original maintainer.  
+> Sincere thanks and gratitude to [@lowlighter](https://github.com/lowlighter) and all original contributors for creating this tool.
 >
 > 📖 See [UPSTREAM.md](UPSTREAM.md) for baseline and synchronization policy, [MIGRATION.md](MIGRATION.md) for migrating your workflows, and [docs/migration/UPSTREAM_BACKLOG.md](docs/migration/UPSTREAM_BACKLOG.md) for the complete backlog triage matrix.
 
-# 📊 Metrics (Community Edition)
+# 📊 Metrics (Community Maintenance Edition)
 
-[![Continuous integration](https://github.com/yuanweize/metrics-community/actions/workflows/ci.yml/badge.svg)](https://github.com/yuanweize/metrics-community/actions/workflows/ci.yml)
+[![Continuous integration](https://github.com/EUR-UN/metrics-community/actions/workflows/ci.yml/badge.svg)](https://github.com/EUR-UN/metrics-community/actions/workflows/ci.yml)
 
-Generate metrics that can be embedded everywhere, including your GitHub profile readme! Supports users, organizations, and even repositories!
+Generate metrics that can be embedded everywhere, including your GitHub profile readme! Supports users, organizations, and repositories.
 
 ## 🚀 快速开始 (Quick Start)
 
-只需在你的工作流（`.github/workflows/metrics.yml`）中将 `uses:` 替换为社区版 `@latest`，即可自动获得所有现代修复与上游同步，所有参数 100% 向后兼容：
+在工作流（`.github/workflows/metrics.yml`）中将 `uses:` 指向社区维护版：
 
 ```yaml
 - name: Generate metrics
-  uses: yuanweize/metrics-community@latest   # 👈 自动跟随最新版
+  uses: EUR-UN/metrics-community@v3.35.0-community.2  # 👈 推荐锁定经过测试的稳定版本
   with:
     token: ${{ secrets.METRICS_TOKEN }}
-    # ... 其余所有已有配置和插件 100% 兼容，无需任何修改！
+    # ... 其余参数与插件配置保持一致
 ```
 
 > [!TIP]
-> - **推荐使用 `@latest`**：自动同步最新 Bug 修复与 GitHub API 适配，且 GHCR 自动推送预编译镜像，约 1 分钟即可高速跑完。
-> - **支持版本锁定**：如需绝对固定的生产环境，可使用发布 Tag，如 `uses: yuanweize/metrics-community@v3.35.0-community.2`。
-> - 📖 详细迁移指引详见 [MIGRATION.md](MIGRATION.md)，自动化无冲突同步策略详见 [UPSTREAM.md](UPSTREAM.md)。
+> - **生产环境推荐**：锁定版本 Tag（如 `uses: EUR-UN/metrics-community@v3.35.0-community.2`）以保证构建确定性与稳定性。
+> - **动态跟进修复**：亦可使用 `@main` 或 `@latest`（请注意 `@latest` 为动态引用的 floating ref）。
+> - **旧路径兼容**：由于 GitHub 仓库所有权转移机制，原 `yuanweize/metrics-community` 路径将自动重定向，但建议主动更新至 `EUR-UN/metrics-community`。
+> - 📖 详细迁移指引详见 [MIGRATION.md](MIGRATION.md)，同步策略详见 [UPSTREAM.md](UPSTREAM.md)。
+
+## 🤝 Community Ecosystem & gh-metrics
+
+This repository is maintained independently under **EUR-UN**. Another active community-maintained fork exists at [gh-metrics/metrics](https://github.com/gh-metrics/metrics). Where fixes are broadly beneficial across the community, we prefer upstream collaboration and shared pull requests over unnecessary fragmentation.
 
 ---
 

@@ -1,6 +1,6 @@
 # 🚀 Migration Guide: Switching to Community Fork
 
-本指南提供将你的 GitHub Actions 工作流从官方已停止维护的 `lowlighter/metrics` 迁移至 `yuanweize/metrics-community` 的简易步骤。
+本指南提供将你的 GitHub Actions 工作流从官方已停止维护的 `lowlighter/metrics` 迁移至 `EUR-UN/metrics-community` 的简易步骤。
 
 ---
 
@@ -13,31 +13,31 @@
 - **Steam 插件游玩状态不准**：缺乏时间窗口，数月前游玩的游戏永久挂在 Recently played 甚至无法正确抓取 F2P 免费游戏。
 - **构建环境与安全警告**：旧版 Docker 镜像环境过旧，缺少多架构支持。
 
-`yuanweize/metrics-community` 提供**完全向后兼容**的修复与持续维护，所有 50+ 个插件与 300+ 个配置项 100% 保持原有语法！
+`EUR-UN/metrics-community` 提供经过同行评审的修复与持续维护，保持原有参数语法兼容。
 
 ---
 
 ## 2. 极简迁移步骤 (Quick Migration)
 
-打开你的个人 Profile 仓库工作流文件（通常是 `.github/workflows/metrics.yml`），只需修改 `uses:` 这一行：
+打开你的个人 Profile 仓库工作流文件（通常是 `.github/workflows/metrics.yml`），修改 `uses:` 指向：
 
-### 方案 A：直接跟随最新代码（推荐，最省心）
-直接使用 `@latest` 标签，永远自动享受最新功能、Bug 修复与上游同步，无需日后频繁改动配置。我们配置了 GHCR 预编译容器流水线，**依然只需 ~1 分钟秒级完成渲染**！
+### 方案 A：锁定稳定版本 Tag（推荐，最稳定）
+在生产工作流中锁定经过特定验证的版本：
 
 ```yaml
 - name: Generate metrics
-  uses: yuanweize/metrics-community@latest   # 👈 直接指向最新版
+  uses: EUR-UN/metrics-community@v3.35.0-community.2  # 👈 锁定稳定验证版本
   with:
     token: ${{ secrets.METRICS_TOKEN }}
-    # ... 其余所有已有配置和插件完全不需要动！
+    # ... 其余参数与插件配置保持原样
 ```
 
-### 方案 B：锁定稳定版本 Tag（适合追求严格版本固定的用户）
-如果你希望锁定在经过特定验证的版本：
+### 方案 B：跟随最新维护代码（适合测试）
+如果希望动态跟进最新维护分支：
 
 ```yaml
 - name: Generate metrics
-  uses: yuanweize/metrics-community@v3.35.0-community.2
+  uses: EUR-UN/metrics-community@main
   with:
     token: ${{ secrets.METRICS_TOKEN }}
 ```
