@@ -1,0 +1,27 @@
+name: Activity regressions
+
+on:
+  pull_request:
+    branches: [main, master]
+    paths:
+      - source/plugins/activity/**
+      - tests/plugins/activity-*.test.mjs
+      - .github/workflows/activity-regressions.yml
+  push:
+    branches: [fix/activity-missing-users, fix/activity-event-recovery]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  activity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run activity behavior regressions
+        run: node --test tests/plugins/activity-*.test.mjs
